@@ -1,4 +1,3 @@
-# Funnel Worker
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -42,16 +41,17 @@ spec:
           volumeMounts:
           - name: config-volume
             mountPath: /etc/config
-
+          {{- if .NeedsPVC }} # Start: Conditional PVC Mount
           - name: funnel-storage-{{.TaskId}}
             mountPath: /opt/funnel/funnel-work-dir/{{.TaskId}}
             subPath: {{.TaskId}}
-
+          {{- end }} # End: Conditional PVC Mount
       volumes:
       - name: config-volume
         configMap:
           name: funnel-worker-config-{{.TaskId}}
-
+      {{- if .NeedsPVC }} # Start: Conditional PVC Volume Definition
       - name: funnel-storage-{{.TaskId}}
         persistentVolumeClaim:
           claimName: funnel-worker-pvc-{{.TaskId}}
+      {{- end }} # End: Conditional PVC Volume Definition

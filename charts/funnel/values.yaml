@@ -373,7 +373,8 @@ Kubernetes:
   # Turn off task state reconciler. When enabled, Funnel communicates with Kubernetes
   # to find tasks that are stuck in a queued state or errored and
   # updates the task state accordingly.
-  DisableReconciler: true
+  DisableReconciler: false
+  DisableJobCleanup: false
   # ReconcileRate is how often the compute backend compares states in Funnel's backend
   # to those reported by the backend
   ReconcileRate: 600s
@@ -386,11 +387,10 @@ Kubernetes:
   # Master batch job template. See: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/#job-v1-batch
   WorkerTemplate: ""
 
-
   # Job template used for executing the tasks.
   ExecutorTemplate: ""
-
   PVTemplate: ""
+  PVCTemplate: ""
 
 #-------------------------------------------------------------------------------
 # Storage

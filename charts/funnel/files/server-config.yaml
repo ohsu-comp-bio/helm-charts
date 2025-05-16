@@ -3,6 +3,7 @@ Compute: {{ .Values.Compute }}
 Kubernetes:
   Executor: {{ .Values.Kubernetes.Executor }}
   DisableReconciler: {{ .Values.Kubernetes.DisableReconciler }}
+  DisableJobCleanup: {{ .Values.Kubernetes.DisableJobCleanup }}
   ReconcileRate: {{ .Values.Kubernetes.ReconcileRate }}
   Namespace: {{ .Release.Namespace }}
   JobsNamespace: {{ .Values.Kubernetes.JobsNamespace }}
@@ -37,8 +38,8 @@ Logger:
   outputFile: {{ .Values.Logger.outputFile }}
 
 Server:
-  HostName: {{ .Values.Server.HostName }}
-  HTTPPort: {{ .Values.Server.HTTPPort }}
+  HostName: "{{ .Values.Server.HostName }}"
+  HTTPPort: "{{ .Values.Server.HTTPPort }}"
   RPCPort: {{ .Values.Server.RPCPort }}
   DisableHTTPCache: {{ .Values.Server.DisableHttpCache }}
 

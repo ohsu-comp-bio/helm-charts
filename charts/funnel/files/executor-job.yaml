@@ -29,13 +29,17 @@ spec:
 
         volumeMounts:
         ### DO NOT CHANGE THIS
-        {{range $idx, $item := .Volumes}}
-        - name: funnel-storage-{{$.TaskId}}
-          mountPath: {{$item.ContainerPath}}
-          subPath: {{$.TaskId}}{{$item.ContainerPath}}
-        {{end}}
+        {{- if .NeedsPVC }}
+          {{range $idx, $item := .Volumes}}
+          - name: funnel-storage-{{$.TaskId}}
+            mountPath: {{$item.ContainerPath}}
+            subPath: {{$.TaskId}}{{$item.ContainerPath}}
+          {{end}}
+        {{- end }}
 
       volumes:
+      {{- if .NeedsPVC }}
       - name: funnel-storage-{{.TaskId}}
         persistentVolumeClaim:
           claimName: funnel-worker-pvc-{{.TaskId}}
+      {{- end }}
