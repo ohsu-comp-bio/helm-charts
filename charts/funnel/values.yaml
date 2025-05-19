@@ -3,7 +3,7 @@ replicaCount: 1
 
 image:
   repository: quay.io/ohsu-comp-bio/funnel
-  tag: feature-plugins
+  tag: "2025-05-19"
   pullPolicy: Always
   # Plugin Init Container
   initContainer:
@@ -21,8 +21,7 @@ labels:
 # Funnel Server (Task Database)
 mongodb:
   image:
-    repository: dlavrenuek/bitnami-mongodb-arm #public.ecr.aws
-    tag: 8.0.4 # no tag listed before
+    registry: public.ecr.aws
   architecture: standalone
   auth:
     enabled: true
