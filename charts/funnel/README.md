@@ -1,4 +1,5 @@
 # funnel
+Currently we are developing with the same format as the example_dev_values.yaml file
 
 ![Version: 0.1.34](https://img.shields.io/badge/Version-0.1.34-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.11.2](https://img.shields.io/badge/AppVersion-0.11.2-informational?style=flat-square)
 
