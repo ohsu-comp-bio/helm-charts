@@ -40,7 +40,7 @@ Logger:
 Server:
   HostName: "{{ .Values.Server.HostName }}"
   HTTPPort: "{{ .Values.Server.HTTPPort }}"
-  RPCPort: {{ .Values.Server.RPCPort }}
+  RPCPort: "{{ .Values.Server.RPCPort }}"
   DisableHTTPCache: {{ .Values.Server.DisableHttpCache }}
 
 RPCClient:
