@@ -621,6 +621,17 @@ entries:
     urls:
     - funnel/funnel-0.1.0.tgz
     version: 0.1.0
+  gen3workflow:
+  - apiVersion: v2
+    appVersion: master
+    created: "2025-06-04T23:33:32.355981283Z"
+    description: A Helm chart for Kubernetes
+    digest: 2c87129bb853be734a2360f2204b150ffaa6fc006ab9faf19e500510a38c602e
+    name: gen3workflow
+    type: application
+    urls:
+    - https://github.com/ohsu-comp-bio/helm-charts/releases/download/gen3workflow-0.1.0/gen3workflow-0.1.0.tgz
+    version: 0.1.0
   grip:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -632,4 +643,4 @@ entries:
     urls:
     - grip/grip-0.1.0.tgz
     version: 0.1.0
-generated: "2025-06-03T16:14:45.905345996Z"
+generated: "2025-06-04T23:33:32.356089556Z"
