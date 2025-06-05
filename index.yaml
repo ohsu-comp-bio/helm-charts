@@ -3,6 +3,23 @@ entries:
   funnel:
   - apiVersion: v2
     appVersion: "2025-06-05"
+    created: "2025-06-05T16:51:28.444144792Z"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.9.4
+    description: A toolkit for distributed task execution ⚙️
+    digest: 13652fe85ad317758eca54a0bc6b4875eeb92b17d854070e6a2e6d4b77cc3feb
+    keywords:
+    - funnel
+    name: funnel
+    type: application
+    urls:
+    - https://github.com/ohsu-comp-bio/helm-charts/releases/download/funnel-0.1.43/funnel-0.1.43.tgz
+    version: 0.1.43
+  - apiVersion: v2
+    appVersion: "2025-06-05"
     created: "2025-06-05T16:29:50.474578943Z"
     dependencies:
     - condition: mongodb.enabled
@@ -660,4 +677,4 @@ entries:
     urls:
     - grip/grip-0.1.0.tgz
     version: 0.1.0
-generated: "2025-06-05T16:29:50.474934337Z"
+generated: "2025-06-05T16:51:28.444694944Z"
