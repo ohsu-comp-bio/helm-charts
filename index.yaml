@@ -2,6 +2,23 @@ apiVersion: v1
 entries:
   funnel:
   - apiVersion: v2
+    appVersion: 2025-06-05-2
+    created: "2025-06-05T19:20:12.717166222Z"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.9.4
+    description: A toolkit for distributed task execution ⚙️
+    digest: ddbb885fd6bf40fd8f6baed1ea433fbcd2f7e2e15013d88e00ab2db1a426c80a
+    keywords:
+    - funnel
+    name: funnel
+    type: application
+    urls:
+    - https://github.com/ohsu-comp-bio/helm-charts/releases/download/funnel-0.1.44/funnel-0.1.44.tgz
+    version: 0.1.44
+  - apiVersion: v2
     appVersion: "2025-06-05"
     created: "2025-06-05T16:51:28.444144792Z"
     dependencies:
@@ -658,6 +675,16 @@ entries:
   gen3workflow:
   - apiVersion: v2
     appVersion: master
+    created: "2025-06-05T19:20:12.865063941Z"
+    description: A Helm chart for Kubernetes
+    digest: b97d5f8ad4226db8af59c7e7daa3226c392762a8a750649e0ac90117369653f2
+    name: gen3workflow
+    type: application
+    urls:
+    - https://github.com/ohsu-comp-bio/helm-charts/releases/download/gen3workflow-0.1.1/gen3workflow-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: master
     created: "2025-06-04T23:33:32.355981283Z"
     description: A Helm chart for Kubernetes
     digest: 2c87129bb853be734a2360f2204b150ffaa6fc006ab9faf19e500510a38c602e
@@ -677,4 +704,4 @@ entries:
     urls:
     - grip/grip-0.1.0.tgz
     version: 0.1.0
-generated: "2025-06-05T16:51:28.444694944Z"
+generated: "2025-06-05T19:20:12.865431397Z"
