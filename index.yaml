@@ -3,6 +3,23 @@ entries:
   funnel:
   - apiVersion: v2
     appVersion: 2025-06-05-2
+    created: "2025-06-09T19:18:12.670976732Z"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.9.4
+    description: A toolkit for distributed task execution ⚙️
+    digest: 8070bc0e1adab2df392f3e9c5a54ae9fe37c1a18f41e92adc0c854cba5893bc7
+    keywords:
+    - funnel
+    name: funnel
+    type: application
+    urls:
+    - https://github.com/ohsu-comp-bio/helm-charts/releases/download/funnel-0.1.45/funnel-0.1.45.tgz
+    version: 0.1.45
+  - apiVersion: v2
+    appVersion: 2025-06-05-2
     created: "2025-06-05T19:20:12.717166222Z"
     dependencies:
     - condition: mongodb.enabled
@@ -675,6 +692,18 @@ entries:
   gen3workflow:
   - apiVersion: v2
     appVersion: master
+    created: "2025-06-09T19:18:12.835817064Z"
+    description: Gen3 service for GA4GH TES integration
+    digest: fed6463df36bfe39b3f594835196856325901761433cbc1bc18e46d6f123a6d7
+    keywords:
+    - Gen3Workflow
+    name: gen3workflow
+    type: application
+    urls:
+    - https://github.com/ohsu-comp-bio/helm-charts/releases/download/gen3workflow-0.1.2/gen3workflow-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: master
     created: "2025-06-05T19:20:12.865063941Z"
     description: A Helm chart for Kubernetes
     digest: b97d5f8ad4226db8af59c7e7daa3226c392762a8a750649e0ac90117369653f2
@@ -696,6 +725,19 @@ entries:
   grip:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-06-09T19:18:13.282539308Z"
+    description: "Graph query engine designed to span across multiple database backends
+      \U0001F6E0️"
+    digest: ca2fb54920b2ec27ecc02b42d049790929947e0d5ec1f315d17d1a4218ad457a
+    keywords:
+    - grip
+    name: grip
+    type: application
+    urls:
+    - https://github.com/ohsu-comp-bio/helm-charts/releases/download/grip-0.1.1/grip-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-04-24T17:30:17.891987-07:00"
     description: A Helm chart for Kubernetes
     digest: 2e93c50e58e2ee18b8e5403d743aa1314f2bbcc1a4d4da9bd6add7775bbaf690
@@ -704,4 +746,4 @@ entries:
     urls:
     - grip/grip-0.1.0.tgz
     version: 0.1.0
-generated: "2025-06-05T19:20:12.865431397Z"
+generated: "2025-06-09T19:18:13.283001831Z"
