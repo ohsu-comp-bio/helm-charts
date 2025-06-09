@@ -725,6 +725,18 @@ entries:
   grip:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-06-09T19:23:47.683334663Z"
+    description: "GRaph Integration Platform (GRIP) \U0001F6E0️"
+    digest: c59f09e07855b757a987f49ab4e81449a5db921865a4521f8c80cd28d8ff1ea8
+    keywords:
+    - grip
+    name: grip
+    type: application
+    urls:
+    - https://github.com/ohsu-comp-bio/helm-charts/releases/download/grip-0.1.2/grip-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-06-09T19:18:13.282539308Z"
     description: "Graph query engine designed to span across multiple database backends
       \U0001F6E0️"
@@ -746,4 +758,4 @@ entries:
     urls:
     - grip/grip-0.1.0.tgz
     version: 0.1.0
-generated: "2025-06-09T19:18:13.283001831Z"
+generated: "2025-06-09T19:23:47.683498689Z"
