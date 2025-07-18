@@ -458,3 +458,35 @@ FTPStorage:
   Timeout: 10s
   User: "anonymous"
   Password: "anonymous"
+
+# Overrides the default volumes configured in the server deployment.
+# If custom volumes are specified, they will fully replace the default values.
+volumes:
+  - name: config-volume
+    configMap:
+      name: funnel-server-config
+
+  - name: worker-templates-volume
+    configMap:
+      name: funnel-worker-templates
+
+  - name: plugin-volume
+    emptyDir: {}  # Shared volume
+
+# Overrides the default volumesMounts configured in the server deployment.
+# If custom volumesMounts are specified, they will fully replace the default values.
+volumeMounts:
+  - name: config-volume
+    mountPath: /etc/config
+
+  - name: worker-templates-volume
+    mountPath: /etc/funnel/templates
+
+  - name: plugin-volume
+    mountPath: /opt/funnel/plugin-binaries
+
+# Overrides the default init container VolumesMounts configured in the server deployment.
+# If custom init container volumesMounts are specified, they will fully replace the default values.
+initVolumeMounts:
+- name: plugin-volume
+  mountPath: /opt/funnel/plugin-binaries
