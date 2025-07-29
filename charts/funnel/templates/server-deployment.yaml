@@ -30,8 +30,7 @@ spec:
           image: {{ .Values.image.initContainer.image }}:{{ .Values.image.initContainer.tag }}
           imagePullPolicy: Always
           volumeMounts:
-          - name: plugin-volume
-            mountPath: /opt/funnel/plugin-binaries
+          {{- toYaml .Values.initVolumeMounts | nindent 10 }}
           command: {{- range .Values.image.initContainer.command }}
             - {{ . }}
           {{- end }}
@@ -74,23 +73,7 @@ spec:
             timeoutSeconds: 5
             failureThreshold: 3
           volumeMounts:
-            - name: config-volume
-              mountPath: /etc/config
-
-            - name: worker-templates-volume
-              mountPath: /etc/funnel/templates
-
-            - name: plugin-volume
-              mountPath: /opt/funnel/plugin-binaries
+          {{- toYaml .Values.volumeMounts | nindent 10 }}
 
       volumes:
-        - name: config-volume
-          configMap:
-            name: funnel-server-config
-
-        - name: worker-templates-volume
-          configMap:
-            name: funnel-worker-templates
-
-        - name: plugin-volume
-          emptyDir: {}  # Shared volume
+      {{- toYaml .Values.volumes | nindent 6 }}
