@@ -1,6 +1,6 @@
 # funnel
 
-![Version: 0.1.51](https://img.shields.io/badge/Version-0.1.51-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2025-08-03](https://img.shields.io/badge/AppVersion-2025--08--03-informational?style=flat-square)
+![Version: 0.1.52](https://img.shields.io/badge/Version-0.1.52-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2025-08-15](https://img.shields.io/badge/AppVersion-2025--08--15-informational?style=flat-square)
 
 A toolkit for distributed task execution ⚙️
 
@@ -128,6 +128,7 @@ A toolkit for distributed task execution ⚙️
 | mongodb.auth.enabled | bool | `true` |  |
 | mongodb.auth.rootPassword | string | `"example"` |  |
 | mongodb.auth.rootUser | string | `"example"` |  |
+| mongodb.extraLabels.app | string | `"funnel-mongodb"` |  |
 | mongodb.image.registry | string | `"public.ecr.aws"` |  |
 | mongodb.persistence.enabled | bool | `false` |  |
 | mongodb.persistence.size | string | `"1Gi"` |  |
