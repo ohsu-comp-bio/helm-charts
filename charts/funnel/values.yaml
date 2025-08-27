@@ -20,7 +20,7 @@ labels:
 # Funnel Server (Task Database)
 mongodb:
   app: funnel-mongodb
-  extraLabels:
+  commonLabels:
     app: funnel-mongodb
   image:
     registry: public.ecr.aws
