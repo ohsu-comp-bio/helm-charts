@@ -128,7 +128,7 @@ A toolkit for distributed task execution ⚙️
 | mongodb.auth.enabled | bool | `true` |  |
 | mongodb.auth.rootPassword | string | `"example"` |  |
 | mongodb.auth.rootUser | string | `"example"` |  |
-| mongodb.extraLabels.app | string | `"funnel-mongodb"` |  |
+| mongodb.commonLabels.app | string | `"funnel-mongodb"` |  |
 | mongodb.image.registry | string | `"public.ecr.aws"` |  |
 | mongodb.persistence.enabled | bool | `false` |  |
 | mongodb.persistence.size | string | `"1Gi"` |  |
