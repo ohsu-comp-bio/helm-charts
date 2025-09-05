@@ -14,6 +14,9 @@ image:
         - cp
         - /app/build/plugins/authorizer
         - /opt/funnel/plugin-binaries/auth-plugin
+      volumeMounts:
+        - name: plugin-volume
+          mountPath: /opt/funnel/plugin-binaries
 
 labels:
   app: funnel
@@ -487,9 +490,3 @@ volumeMounts:
 
   - name: plugin-volume
     mountPath: /opt/funnel/plugin-binaries
-
-# Overrides the default init container VolumesMounts configured in the server deployment.
-# If custom init container volumesMounts are specified, they will fully replace the default values.
-initVolumeMounts:
-- name: plugin-volume
-  mountPath: /opt/funnel/plugin-binaries
