@@ -24,17 +24,30 @@ spec:
         checksum/values: {{ .Values | quote | sha256sum }}
     spec:
       serviceAccountName: funnel-sa-{{ .Release.Namespace }}
-      {{ if .Values.Plugins }}
+      {{- if .Values.image.initContainers }}
       initContainers:
-        - name: plugins
-          image: {{ .Values.image.initContainer.image }}:{{ .Values.image.initContainer.tag }}
-          imagePullPolicy: Always
-          volumeMounts:
-          {{- toYaml .Values.initVolumeMounts | nindent 10 }}
-          command: {{- range .Values.image.initContainer.command }}
-            - {{ . }}
+      {{- range .Values.image.initContainers }}
+        - name: {{ .name | default "initcontainer" }}
+          image: "{{ .image }}:{{ .tag }}"
+          imagePullPolicy: {{ .pullPolicy | default "IfNotPresent" }}
+          {{- if .command }}
+          command:
+          {{- range .command }}
+            - {{ . | quote }}
           {{- end }}
-      {{ end }}
+          {{- end }}
+          {{- if .args }}
+          args:
+          {{- range .args }}
+            - {{ . | quote }}
+          {{- end }}
+          {{- end }}
+          {{- if .volumeMounts }}
+          volumeMounts:
+          {{- toYaml .volumeMounts | nindent 6 }}
+          {{- end }}
+      {{- end }}
+      {{- end }}
       containers:
         - name: funnel
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"

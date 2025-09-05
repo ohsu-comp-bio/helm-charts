@@ -5,14 +5,15 @@ image:
   repository: quay.io/ohsu-comp-bio/funnel
   pullPolicy: Always
   # Plugin Init Container
-  initContainer:
-    image: quay.io/ohsu-comp-bio/funnel-plugins
-    tag: pr-1
-    pullPolicy: Always
-    command:
-      - cp
-      - /app/build/plugins/authorizer
-      - /opt/funnel/plugin-binaries/auth-plugin
+  initContainers:
+    - name: plugins
+      image: quay.io/ohsu-comp-bio/funnel-plugins
+      tag: pr-1
+      pullPolicy: Always
+      command:
+        - cp
+        - /app/build/plugins/authorizer
+        - /opt/funnel/plugin-binaries/auth-plugin
 
 labels:
   app: funnel
