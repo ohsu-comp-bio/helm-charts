@@ -4,8 +4,8 @@ replicaCount: 1
 image:
   repository: quay.io/ohsu-comp-bio/funnel
   pullPolicy: Always
-  # Plugin Init Container
   initContainers:
+    # Plugin Init Container
     - name: plugins
       image: quay.io/ohsu-comp-bio/funnel-plugins
       tag: pr-1
