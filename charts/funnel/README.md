@@ -112,16 +112,16 @@ A toolkit for distributed task execution ⚙️
 | Worker.MaxParallelTransfers | int | `10` |  |
 | Worker.PollingRate | string | `"5s"` |  |
 | Worker.WorkDir | string | `"./funnel-work-dir"` |  |
-| image.initContainer.command[0] | string | `"cp"` |  |
-| image.initContainer.command[1] | string | `"/app/build/plugins/authorizer"` |  |
-| image.initContainer.command[2] | string | `"/opt/funnel/plugin-binaries/auth-plugin"` |  |
-| image.initContainer.image | string | `"quay.io/ohsu-comp-bio/funnel-plugins"` |  |
-| image.initContainer.pullPolicy | string | `"Always"` |  |
-| image.initContainer.tag | string | `"pr-1"` |  |
-| image.pullPolicy | string | `"Always"` |  |
-| image.repository | string | `"quay.io/ohsu-comp-bio/funnel"` |  |
-| initVolumeMounts[0].mountPath | string | `"/opt/funnel/plugin-binaries"` |  |
-| initVolumeMounts[0].name | string | `"plugin-volume"` |  |
+| image.repository | string | `"quay.io/ohsu-comp-bio/funnel"` | Funnel container image repository |
+| image.pullPolicy | string | `"Always"` | Funnel container image pull policy |
+| image.initContainers | list | `[]` | List of initContainers to run before Funnel starts. Each item can define `name`, `image`, `tag`, `pullPolicy`, `command`, `args`, `env`, and `volumeMounts`. |
+| image.initContainers[0].name | string | `"plugins"` | Name of the initContainer |
+| image.initContainers[0].image | string | `"quay.io/ohsu-comp-bio/funnel-plugins"` | InitContainer image repository |
+| image.initContainers[0].tag | string | `"pr-1"` | InitContainer image tag |
+| image.initContainers[0].pullPolicy | string | `"Always"` | InitContainer image pull policy |
+| image.initContainers[0].command | list | `["cp", "/app/build/plugins/authorizer", "/opt/funnel/plugin-binaries/auth-plugin"]` | Command to execute in the initContainer |
+| image.initContainers[0].env | list | `[]` | Optional environment variables for the initContainer |
+| image.initContainers[0].volumeMounts | list | `[{"name": "plugin-volume", "mountPath": "/opt/funnel/plugin-binaries"}]` | Volume mounts for the initContainer |
 | labels.app | string | `"funnel"` |  |
 | mongodb.app | string | `"funnel-mongodb"` |  |
 | mongodb.architecture | string | `"standalone"` |  |
