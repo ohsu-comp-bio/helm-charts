@@ -47,9 +47,9 @@ spec:
           {{- toYaml .volumeMounts | nindent 10 }}
           {{- end }}
           {{- if .env }}
-+         env:
-+          {{- toYaml .env | nindent 10 }}
-+          {{- end }}
+          env:
+          {{- toYaml .env | nindent 10 }}
+          {{- end }}
       {{- end }}
       {{- end }}
       containers:
