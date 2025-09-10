@@ -3,6 +3,16 @@ entries:
   backups:
   - apiVersion: v2
     appVersion: 1.13.0
+    created: "2025-09-10T02:13:45.129018811Z"
+    description: A Helm chart for Kubernetes
+    digest: cd6913a733060a9b2c93e9269a9a797a65290ce39a4da7b97579243e37acc3c4
+    name: backups
+    type: application
+    urls:
+    - https://github.com/ohsu-comp-bio/helm-charts/releases/download/backups-0.2.5/backups-0.2.5.tgz
+    version: 0.2.5
+  - apiVersion: v2
+    appVersion: 1.13.0
     created: "2025-09-10T02:09:09.501698111Z"
     description: A Helm chart for Kubernetes
     digest: c655441daa798a288a96c0d58f8653d00c947edd5e46ace02549a84b262997a9
@@ -1029,4 +1039,4 @@ entries:
     urls:
     - https://github.com/ohsu-comp-bio/helm-charts/releases/download/tests-0.1.0/tests-0.1.0.tgz
     version: 0.1.0
-generated: "2025-09-10T02:09:09.501887023Z"
+generated: "2025-09-10T02:13:45.129225299Z"
