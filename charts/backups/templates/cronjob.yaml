@@ -12,14 +12,21 @@ spec:
           containers:
             - name: backup-service
               image: quay.io/ohsu-comp-bio/backup-service:latest
+              imagePullPolicy: Always
+              
               # TODO: Move these default values to values.yaml
               env:
                 # Local directory for storing backups inside the container
                 - name: DIR
                   value: "calypr-dev"
 
+                # GRIP Host 
                 - name: GRIP_HOST
                   value: "grip-service.default.svc.cluster.local"
+
+                # GRIP Graph
+                - name: GRIP_GRAPH
+                  value: "CALYPR"
                 
                 # Postgres Host
                 - name: PGHOST
@@ -56,4 +63,5 @@ spec:
                     secretKeyRef:
                       name: s3-credentials
                       key: AWS_SECRET_KEY
+
           restartPolicy: OnFailure
