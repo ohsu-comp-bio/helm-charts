@@ -18,6 +18,9 @@ spec:
                 - name: DIR
                   value: "calypr-dev"
 
+                - name: GRIP_HOST
+                  value: "grip-service.default.svc.cluster.local"
+                
                 # Postgres Host
                 - name: PGHOST
                   value: "local-postgresql.default.svc.cluster.local"
