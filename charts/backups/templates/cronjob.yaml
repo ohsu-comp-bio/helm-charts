@@ -1,0 +1,56 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backup-service-cronjob
+  namespace: backups
+spec:
+  schedule: "0 2 * * *" # Runs daily at 2 AM UTC
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: backup-service
+              image: quay.io/ohsu-comp-bio/backup-service:latest
+              # TODO: Move these default values to values.yaml
+              env:
+                # Local directory for storing backups inside the container
+                - name: DIR
+                  value: "calypr-dev"
+
+                # Postgres Host
+                - name: PGHOST
+                  value: "local-postgresql.default.svc.cluster.local"
+                
+                - name: PGUSER
+                  value: "postgres"
+                
+                # Postgres Password
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgres-credentials
+                      key: postgres-password
+                
+                # S3 Endpoint
+                - name: ENDPOINT
+                  value: "https://aced-storage.ohsu.edu"
+                
+                # S3 Bucket
+                - name: BUCKET
+                  value: "calypr-backups"
+                
+                # S3 Access Key
+                - name: KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: s3-credentials
+                      key: AWS_ACCESS_KEY
+                
+                # S3 Secret Key
+                - name: SECRET
+                  valueFrom:
+                    secretKeyRef:
+                      name: s3-credentials
+                      key: AWS_SECRET_KEY
+          restartPolicy: OnFailure
