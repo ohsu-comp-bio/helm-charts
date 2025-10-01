@@ -28,10 +28,6 @@ spec:
                 - name: GRIP_GRAPH
                   value: "CALYPR"
 
-                # GRIP Limit
-                - name: GRIP_LIMIT
-                  value: "1000000"
-                
                 # Postgres Host
                 - name: PGHOST
                   value: "local-postgresql.default.svc.cluster.local"
