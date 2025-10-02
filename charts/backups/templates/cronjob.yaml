@@ -1,67 +1,75 @@
+# templates/cronjob.yaml (or the new CronJob.yaml location in a Helm chart)
 apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: backup-service-cronjob
   namespace: backups
 spec:
-  schedule: "0 2 * * *" # Runs daily at 2 AM UTC
+  # Use the schedule from values.yaml
+  schedule: "{{ .Values.backups.schedule }}"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
             - name: backup-service
-              image: quay.io/ohsu-comp-bio/backup-service:latest
+              # Use the image from values.yaml
+              image: "{{ .Values.backups.image }}"
               imagePullPolicy: Always
-              
-              # TODO: Move these default values to values.yaml
-              env:
-                # Local directory for storing backups inside the container
-                - name: DIR
-                  value: "calypr-dev"
 
-                # GRIP Host 
+              env:
+                # GRIP Host
                 - name: GRIP_HOST
-                  value: "grip-service.default.svc.cluster.local"
+                  value: "{{ .Values.backups.grip.host }}"
 
                 # GRIP Graph
                 - name: GRIP_GRAPH
-                  value: "CALYPR"
+                  value: "{{ .Values.backups.grip.graph }}"
 
                 # Postgres Host
                 - name: PGHOST
-                  value: "local-postgresql.default.svc.cluster.local"
-                
+                  value: "{{ .Values.backups.postgres.host }}"
+
+                # Postgres User
                 - name: PGUSER
-                  value: "postgres"
-                
+                  value: "{{ .Values.backups.postgres.user }}"
+
                 # Postgres Password
+                # Note: this secret relies on the existing Gen3 Postgres secret
+                #       and is not expected to be created separately.
                 - name: PGPASSWORD
                   valueFrom:
                     secretKeyRef:
-                      name: postgres-credentials
+                      name: "{{ .Values.backups.postgres.secret }}"
                       key: postgres-password
-                
+
                 # S3 Endpoint
                 - name: ENDPOINT
-                  value: "https://aced-storage.ohsu.edu"
-                
+                  value: "{{ .Values.backups.s3.endpoint }}"
+
                 # S3 Bucket
                 - name: BUCKET
-                  value: "calypr-backups"
-                
+                  value: "{{ .Values.backups.s3.bucket }}"
+
+                # S3 Directory
+                - name: DIR
+                  value: "{{ .Values.backups.s3.dir }}"
+
                 # S3 Access Key
+                # TODO: This secret requires creation; it is not part of Gen3 by default.
                 - name: KEY
                   valueFrom:
                     secretKeyRef:
-                      name: s3-credentials
+                      name: "{{ .Values.backups.s3.secret.key }}"
                       key: AWS_ACCESS_KEY
-                
+
                 # S3 Secret Key
+                # TODO: This secret requires creation; it is not part of Gen3 by default.
                 - name: SECRET
                   valueFrom:
                     secretKeyRef:
                       name: s3-credentials
+                      name: "{{ .Values.backups.s3.secret.secret }}"
                       key: AWS_SECRET_KEY
 
           restartPolicy: OnFailure
