@@ -3,7 +3,6 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: backup-service-cronjob
-  namespace: backups
 spec:
   # Use the schedule from values.yaml
   schedule: "{{ .Values.backups.schedule }}"
@@ -11,6 +10,7 @@ spec:
     spec:
       template:
         spec:
+          restartPolicy: OnFailure
           containers:
             - name: backup-service
               # Use the image from values.yaml
@@ -71,5 +71,3 @@ spec:
                       name: s3-credentials
                       name: "{{ .Values.backups.s3.secret.secret }}"
                       key: AWS_SECRET_KEY
-
-          restartPolicy: OnFailure
