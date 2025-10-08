@@ -13,7 +13,6 @@ spec:
           restartPolicy: OnFailure
           containers:
             - name: backup-service
-              # Use the image from values.yaml
               image: "{{ .Values.backups.image }}"
               imagePullPolicy: Always
 
@@ -57,17 +56,16 @@ spec:
 
                 # S3 Access Key
                 # TODO: This secret requires creation; it is not part of Gen3 by default.
-                - name: KEY
+                - name: ACCESS_KEY
                   valueFrom:
                     secretKeyRef:
-                      name: "{{ .Values.backups.s3.secret.key }}"
-                      key: AWS_ACCESS_KEY
+                      name: "{{ .Values.backups.s3.secret }}"
+                      key: ACCESS_KEY
 
                 # S3 Secret Key
                 # TODO: This secret requires creation; it is not part of Gen3 by default.
-                - name: SECRET
+                - name: SECRET_KEY
                   valueFrom:
                     secretKeyRef:
-                      name: s3-credentials
-                      name: "{{ .Values.backups.s3.secret.secret }}"
-                      key: AWS_SECRET_KEY
+                      name: "{{ .Values.backups.s3.secret }}"
+                      key: SECRET_KEY
