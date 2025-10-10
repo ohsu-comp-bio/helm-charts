@@ -14,13 +14,16 @@ spec:
     spec:
       # NodeSelectors
       # https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/#create-a-pod-that-gets-scheduled-to-your-chosen-node
+      {{- if .NodeSelector }}
       nodeSelector:
         {{- range $key, $value := .NodeSelector }}
         {{ $key }}: {{ $value }}
         {{- end }}
+      {{- end }}
 
       # Tolerations
       # https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
+      {{- if .Tolerations }}
       tolerations:
         {{- range .Tolerations }}
         - key: {{ .key }}
@@ -32,6 +35,7 @@ spec:
           tolerationSeconds: {{ .tolerationSeconds }}
           {{- end }}
         {{- end }}
+      {{- end }}
 
       # SecurityContext
       # https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
