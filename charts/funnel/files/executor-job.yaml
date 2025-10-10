@@ -12,6 +12,37 @@ spec:
   completions: 1
   template:
     spec:
+      # NodeSelectors
+      # https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/#create-a-pod-that-gets-scheduled-to-your-chosen-node
+      nodeSelector:
+        {{- range $key, $value := .NodeSelector }}
+        {{ $key }}: {{ $value }}
+        {{- end }}
+
+      # Tolerations
+      # https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
+      tolerations:
+        {{- range .Tolerations }}
+        - key: {{ .key }}
+          operator: {{ .operator }}
+          value: {{ .value }}
+          effect: {{ .effect }}
+          # Adding tolerationSeconds as optional field if needed
+          {{- if .tolerationSeconds }}
+          tolerationSeconds: {{ .tolerationSeconds }}
+          {{- end }}
+        {{- end }}
+
+      # SecurityContext
+      # https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
+      {{- if .securityContext }}
+      securityContext:
+        fsGroup: {{ .securityContext.fsGroup }}
+        runAsUser: {{ .securityContext.runAsUser }}
+        runAsGroup: {{ .securityContext.runAsGroup }}
+        supplementalGroups: {{ .securityContext.supplementalGroups }}
+      {{- end }}
+
       restartPolicy: OnFailure
       serviceAccountName: funnel-sa-{{.Namespace}}
       containers:
