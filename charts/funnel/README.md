@@ -1,6 +1,6 @@
 # funnel
 
-![Version: 0.1.58](https://img.shields.io/badge/Version-0.1.58-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2025-10-01](https://img.shields.io/badge/AppVersion-2025--10--01-informational?style=flat-square)
+![Version: 0.1.59-rc.1](https://img.shields.io/badge/Version-0.1.59--rc.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2025-10-01](https://img.shields.io/badge/AppVersion-2025--10--01-informational?style=flat-square)
 
 A toolkit for distributed task execution ⚙️
 
@@ -60,10 +60,12 @@ A toolkit for distributed task execution ⚙️
 | Kubernetes.ExecutorTemplate | string | `""` |  |
 | Kubernetes.JobsNamespace | string | `""` |  |
 | Kubernetes.Namespace | string | `""` |  |
+| Kubernetes.NodeSelector | object | `{}` |  |
 | Kubernetes.PVCTemplate | string | `""` |  |
 | Kubernetes.PVTemplate | string | `""` |  |
 | Kubernetes.ReconcileRate | string | `"600s"` |  |
 | Kubernetes.ServiceAccount | string | `""` |  |
+| Kubernetes.Tolerations | list | `[]` |  |
 | Kubernetes.WorkerTemplate | string | `""` |  |
 | LocalStorage.AllowedDirs[0] | string | `"./"` |  |
 | Logger.level | string | `"debug"` |  |
