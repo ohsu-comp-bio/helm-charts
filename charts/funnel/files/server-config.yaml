@@ -8,22 +8,25 @@ Kubernetes:
   Namespace: {{ .Release.Namespace }}
   JobsNamespace: {{ .Values.Kubernetes.JobsNamespace }}
   ServiceAccount: {{ .Values.Kubernetes.ServiceAccount }}
+
   NodeSelector:
     {{- if .Values.Kubernetes.NodeSelector }}
     {{- range $key, $value := .Values.Kubernetes.NodeSelector }}
     {{ $key }}: {{ $value }}
     {{- end }}
     {{- end }}
-  # Tolerations:
+
+  Tolerations:
     {{- if .Values.Kubernetes.Tolerations }}
     {{- range .Values.Kubernetes.Tolerations }}
-    - key: {{ .key }}
-      operator: {{ .operator }}
-      value: {{ .value }}
-      effect: {{ .effect }}
-      # Adding tolerationSeconds as optional field if needed
-      {{- if .tolerationSeconds }}
-      tolerationSeconds: {{ .tolerationSeconds }}
+    - Key: {{ .Key }}
+      Operator: {{ .Operator }}
+      {{- if .Value }}
+      Value: {{ .Value }}
+      {{- end }}
+      Effect: {{ .Effect }}
+      {{- if .TolerationSeconds }}
+      TolerationSeconds: {{ .TolerationSeconds }}
       {{- end }}
     {{- end }}
     {{- end }}

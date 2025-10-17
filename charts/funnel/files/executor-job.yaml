@@ -26,14 +26,11 @@ spec:
       {{- if .Tolerations }}
       tolerations:
         {{- range .Tolerations }}
-        - key: {{ .key }}
-          operator: {{ .operator }}
-          value: {{ .value }}
-          effect: {{ .effect }}
-          # Adding tolerationSeconds as optional field if needed
-          {{- if .tolerationSeconds }}
-          tolerationSeconds: {{ .tolerationSeconds }}
-          {{- end }}
+        - key: {{ .Key }}
+          operator: {{ .Operator }}
+          effect: {{ .Effect }}
+          {{if .Value}}value: {{ .Value }}{{end}}
+          {{if .TolerationSeconds}}tolerationSeconds: {{ .TolerationSeconds }}{{end}}
         {{- end }}
       {{- end }}
 
