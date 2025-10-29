@@ -14,3 +14,5 @@ data:
 {{ (.Files.Glob "files/worker-job.yaml").AsConfig | indent 2 }}
 
 {{ (.Files.Glob "files/executor-job.yaml").AsConfig | indent 2 }}
+
+{{ (.Files.Glob "files/serviceaccount.yaml").AsConfig | indent 2 }}

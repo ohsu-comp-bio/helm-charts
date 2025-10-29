@@ -47,6 +47,9 @@ Kubernetes:
   PVCTemplate: |
 {{ default (.Files.Get "files/worker-pvc.yaml") .Values.Kubernetes.PVCTemplate | indent 4 }}
 
+  # ServiceAccount template
+  ServiceAccountTemplate: |
+{{ default (.Files.Get "files/serviceaccount.yaml") .Values.Kubernetes.ServiceAccountTemplate | indent 4 }}
 
 Database: {{ .Values.Database }}
 
