@@ -6,12 +6,13 @@ metadata:
 rules:
   - apiGroups: [""]
     resources:
+      - "configmaps"
       - "pods"
       - "pods/log"
-      - persistentvolumes
+      - "persistentvolumes"
       - "persistentvolumeclaims"
-      - "configmaps"
       - "secrets"
+      - "serviceaccounts"
     verbs:
       - "get"
       - "list"
