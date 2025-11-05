@@ -45,7 +45,7 @@ spec:
       {{- end }}
 
       restartPolicy: OnFailure
-      serviceAccountName: funnel-worker-sa-{{.Namespace}}-{{.TaskId}}
+      serviceAccountName: funnel-worker-sa-{{.JobsNamespace}}-{{.TaskId}}
       containers:
       - name: funnel-worker-{{.TaskId}}
         image: {{.Image}}
