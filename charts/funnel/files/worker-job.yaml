@@ -55,7 +55,7 @@ spec:
         supplementalGroups: {{ .securityContext.supplementalGroups }}
       {{- end }}
 
-      serviceAccountName: funnel-sa-{{.Namespace}}
+      serviceAccountName: funnel-worker-sa-{{.Namespace}}-{{.TaskId}}
       restartPolicy: OnFailure
       containers:
         - name: funnel-worker-{{.TaskId}}

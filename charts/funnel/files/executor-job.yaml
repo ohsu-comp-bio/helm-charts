@@ -45,7 +45,7 @@ spec:
       {{- end }}
 
       restartPolicy: OnFailure
-      serviceAccountName: funnel-sa-{{.Namespace}}
+      serviceAccountName: funnel-worker-sa-{{.Namespace}}-{{.TaskId}}
       containers:
       - name: funnel-worker-{{.TaskId}}
         image: {{.Image}}
@@ -55,9 +55,9 @@ spec:
         workingDir: {{.Workdir}}
         resources:
           requests:
-            cpu: {{if ne .Cpus 0 -}}{{.Cpus}}{{ else }}{{"100m"}}{{end}}
-            memory: '{{if ne .RamGb 0.0 -}}{{printf "%.0fG" .RamGb}}{{else}}{{"16M"}}{{end}}'
-            ephemeral-storage: '{{if ne .DiskGb 0.0 -}}{{printf "%.0fG" .DiskGb}}{{else}}{{"100M"}}{{end}}'
+            cpu: {{.Cpus}}
+            memory: {{.RamGb}}
+            ephemeral-storage: {{.DiskGb}}
 
         volumeMounts:
         ### DO NOT CHANGE THIS
