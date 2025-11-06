@@ -1,6 +1,6 @@
 # funnel
 
-![Version: 0.1.63](https://img.shields.io/badge/Version-0.1.63-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2025-10-31](https://img.shields.io/badge/AppVersion-2025--10--31-informational?style=flat-square)
+![Version: 0.1.64](https://img.shields.io/badge/Version-0.1.64-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2025-11-06](https://img.shields.io/badge/AppVersion-2025--11--06-informational?style=flat-square)
 
 A toolkit for distributed task execution ⚙️
 
