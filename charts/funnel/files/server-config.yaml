@@ -51,6 +51,12 @@ Kubernetes:
   ServiceAccountTemplate: |
 {{ default (.Files.Get "files/serviceaccount.yaml") .Values.Kubernetes.ServiceAccountTemplate | indent 4 }}
 
+  RoleTemplate: |
+{{ default (.Files.Get "files/role.yaml") .Values.Kubernetes.RoleTemplate | indent 4 }}
+
+  RoleBindingTemplate: |
+{{ default (.Files.Get "files/rolebinding.yaml") .Values.Kubernetes.RoleBindingTemplate | indent 4 }}
+
 Database: {{ .Values.Database }}
 
 EventWriters:
