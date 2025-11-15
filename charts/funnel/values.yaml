@@ -40,13 +40,24 @@ mongodb:
 rbac:
   create: true
 
+# Backoff/Completions for Worker + Executor Jobs
+backoffLimit: 1
+completions: 1
+
+# Resource Requests/Limits for Worker + Executor Jobs
 resources:
   requests:
-    cpu: 0
-    memory: 0
+    cpu: 100m
+    memory: 512Mi
+    ephemeral_storage: 512Mi
   limits:
-    cpu: 0
-    memory: 0
+    cpu: 1000m
+    memory: 2048Mi
+    ephemeral_storage: 2048Mi
+
+# AWS STS Source + Region for S3 CSI Driver
+authenticationSource: pod
+stsRegion: us-east-1
 
 service:
   type: ClusterIP
@@ -472,13 +483,9 @@ FTPStorage:
 # Overrides the default volumes configured in the server deployment.
 # If custom volumes are specified, they will fully replace the default values.
 volumes:
-  - name: config-volume
+  - name: funnel-server-config-volume
     configMap:
       name: funnel-server-config
-
-  - name: worker-templates-volume
-    configMap:
-      name: funnel-worker-templates
 
   - name: plugin-volume
     emptyDir: {}  # Shared volume
@@ -486,11 +493,8 @@ volumes:
 # Overrides the default volumesMounts configured in the server deployment.
 # If custom volumesMounts are specified, they will fully replace the default values.
 volumeMounts:
-  - name: config-volume
+  - name: funnel-server-config-volume
     mountPath: /etc/config
-
-  - name: worker-templates-volume
-    mountPath: /etc/funnel/templates
 
   - name: plugin-volume
     mountPath: /opt/funnel/plugin-binaries

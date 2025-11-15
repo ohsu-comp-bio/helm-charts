@@ -1,39 +1,43 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{.TaskId}}
-  namespace: {{.JobsNamespace}}
+  name: {{`{{.TaskId}}`}}
+  namespace: {{`{{.JobsNamespace}}`}}
   labels:
     app: funnel-worker
-    task-id: {{.TaskId}}
+    task-id: {{`{{.TaskId}}`}}
     # Custom Labels support
+    {{`
     {{- range $key, $value := .ExtraLabels }}
     {{ $key }}: {{ $value }}
     {{- end }}
     {{- range $key, $value := .NodeSelector }}
     {{ $key }}: {{ $value }}
     {{- end }}
-    foo: bar
+    `}}
 spec:
-  backoffLimit: 1
-  completions: 1
+  backoffLimit: {{ .Values.backoffLimit}}
+  completions: {{ .Values.completions }}
   template:
     metadata:
       labels:
         app: funnel-worker
-        task-id: {{.TaskId}}
+        task-id: {{`{{.TaskId}}`}}
     spec:
       # NodeSelectors
       # https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/#create-a-pod-that-gets-scheduled-to-your-chosen-node
+      {{`
       {{- if .NodeSelector }}
       nodeSelector:
         {{- range $key, $value := .NodeSelector }}
         {{ $key }}: {{ $value }}
         {{- end }}
       {{- end }}
+      `}}
 
       # Tolerations
       # https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
+      {{`
       {{- if .Tolerations }}
       tolerations:
         {{- range .Tolerations }}
@@ -44,9 +48,11 @@ spec:
           {{if .TolerationSeconds}}tolerationSeconds: {{ .TolerationSeconds }}{{end}}
         {{- end }}
       {{- end }}
+      `}}
 
       # SecurityContext
       # https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
+      {{`
       {{- if .securityContext }}
       securityContext:
         fsGroup: {{ .securityContext.fsGroup }}
@@ -54,40 +60,45 @@ spec:
         runAsGroup: {{ .securityContext.runAsGroup }}
         supplementalGroups: {{ .securityContext.supplementalGroups }}
       {{- end }}
+      `}}
 
-      serviceAccountName: funnel-worker-sa-{{.JobsNamespace}}-{{.TaskId}}
+      serviceAccountName: {{`{{.ServiceAccountName}}`}}
       restartPolicy: OnFailure
       containers:
-        - name: funnel-worker-{{.TaskId}}
-          # TODO: Make the image + tag configurable
-          image: {{.Image}}
-          imagePullPolicy: Always
-          args:
-            - "worker"
-            - "run"
-            - "--config"
-            - "/etc/config/funnel-worker.yaml"
-            - "--taskID"
-            - {{.TaskId}}
-          resources:
-            requests:
-              cpu: {{if ne .Cpus 0 -}}{{.Cpus}}{{ else }}{{"100m"}}{{end}}
-              memory: {{if ne .RamGb 0.0 -}}{{printf "%.0fG" .RamGb}}{{else}}{{"16M"}}{{end}}
-              ephemeral-storage: {{if ne .DiskGb 0.0 -}}{{printf "%.0fG" .DiskGb}}{{else}}{{"100M"}}{{end}}
-          volumeMounts:
-          - name: config-volume
-            mountPath: /etc/config
-          {{- if .NeedsPVC }} # Start: Conditional PVC Mount
-          - name: funnel-storage-{{.TaskId}}
-            mountPath: /opt/funnel/funnel-work-dir/{{.TaskId}}
-            subPath: {{.TaskId}}
-          {{- end }} # End: Conditional PVC Mount
+      - name: funnel-worker-{{`{{.TaskId}}`}}
+        # TODO: Make the image + tag configurable
+        image: {{`{{.Image}}`}}
+        imagePullPolicy: Always
+        args:
+          - "worker"
+          - "run"
+          - "--config"
+          - "/etc/config/funnel-worker.yaml"
+          - "--taskID"
+          - {{`{{.TaskId}}`}}
+        resources:
+          requests:
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}
+            ephemeral-storage: {{ .Values.resources.requests.ephemeral_storage }}
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/config
+        {{`
+        {{- if .NeedsPVC }}
+        - name: funnel-storage-{{.TaskId}}
+          mountPath: /opt/funnel/funnel-work-dir/{{.TaskId}}
+          subPath: {{.TaskId}}
+        {{- end }}
+        `}}
       volumes:
       - name: config-volume
         configMap:
           name: funnel-worker-config-{{.TaskId}}
-      {{- if .NeedsPVC }} # Start: Conditional PVC Volume Definition
+      {{`
+      {{- if .NeedsPVC }}
       - name: funnel-storage-{{.TaskId}}
         persistentVolumeClaim:
           claimName: funnel-worker-pvc-{{.TaskId}}
-      {{- end }} # End: Conditional PVC Volume Definition
+      {{- end }}
+      `}}

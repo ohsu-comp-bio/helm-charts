@@ -1,11 +1,11 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: funnel-worker-sa-{{.Namespace}}-{{.TaskId}}-role
-  namespace: {{.Namespace}}
+  name: funnel-worker-sa-{{`{{.Namespace}}`}}-{{`{{.TaskId}}`}}-role
+  namespace: {{`{{.Namespace}}`}}
   labels:
     app: funnel
-    taskId: {{.TaskId}}
+    taskId: {{`{{.TaskId}}`}}
 rules:
 # Job management permissions
 - apiGroups: ["batch"]

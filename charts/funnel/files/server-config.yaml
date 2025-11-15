@@ -33,29 +33,29 @@ Kubernetes:
 
   # Worker Job
   WorkerTemplate: |
-{{ default (.Files.Get "files/worker-job.yaml") .Values.Kubernetes.WorkerTemplate | indent 4 }}
+{{ tpl (.Files.Get "files/worker-job.yaml") . | indent 4 }}
 
   # Executor Job
   ExecutorTemplate: |
-{{ default (.Files.Get "files/executor-job.yaml") .Values.Kubernetes.ExecutorTemplate | indent 4 }}
+{{ tpl (.Files.Get "files/executor-job.yaml") . | indent 4 }}
 
   # PV template
   PVTemplate: |
-{{ default (.Files.Get "files/worker-pv.yaml") .Values.Kubernetes.PVTemplate | indent 4 }}
+{{ tpl (.Files.Get "files/worker-pv.yaml") . | indent 4 }}
 
   # PVC template
   PVCTemplate: |
-{{ default (.Files.Get "files/worker-pvc.yaml") .Values.Kubernetes.PVCTemplate | indent 4 }}
+{{ tpl (.Files.Get "files/worker-pvc.yaml") . | indent 4 }}
 
   # ServiceAccount template
   ServiceAccountTemplate: |
-{{ default (.Files.Get "files/serviceaccount.yaml") .Values.Kubernetes.ServiceAccountTemplate | indent 4 }}
+{{ tpl (.Files.Get "files/serviceaccount.yaml") . | indent 4 }}
 
   RoleTemplate: |
-{{ default (.Files.Get "files/role.yaml") .Values.Kubernetes.RoleTemplate | indent 4 }}
+{{ tpl (.Files.Get "files/role.yaml") . | indent 4 }}
 
   RoleBindingTemplate: |
-{{ default (.Files.Get "files/rolebinding.yaml") .Values.Kubernetes.RoleBindingTemplate | indent 4 }}
+{{ tpl (.Files.Get "files/rolebinding.yaml") . | indent 4 }}
 
 Database: {{ .Values.Database }}
 
