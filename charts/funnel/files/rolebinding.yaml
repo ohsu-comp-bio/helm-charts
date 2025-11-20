@@ -8,7 +8,7 @@ metadata:
     taskId: {{`{{.TaskId}}`}}
 subjects:
 - kind: ServiceAccount
-  name: funnel-worker-sa-{{`{{.Namespace}}`}}-{{`{{.TaskId}}`}}
+  name: {{`{{.ServiceAccount}}`}}
   namespace: {{`{{.Namespace}}`}}
 roleRef:
   kind: Role
