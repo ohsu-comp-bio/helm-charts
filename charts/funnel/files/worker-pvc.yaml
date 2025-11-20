@@ -2,11 +2,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: funnel-worker-pvc-{{.TaskId}}
-  namespace: {{ .Namespace }}
+  name: funnel-worker-pvc-{{`{{.TaskId}}`}}
+  namespace: {{`{{.Namespace}}`}}
   labels:
     app: funnel
-    taskId: {{.TaskId}}
+    taskId: {{`{{.TaskId}}`}}
 spec:
   storageClassName: "" # Required for static provisioning
   accessModes:
@@ -14,4 +14,4 @@ spec:
   resources:
     requests:
       storage: 10Mi
-  volumeName: funnel-worker-pv-{{.TaskId}}
+  volumeName: funnel-worker-pv-{{`{{.TaskId}}`}}
