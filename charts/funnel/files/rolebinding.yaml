@@ -8,7 +8,7 @@ metadata:
     taskId: {{`{{.TaskId}}`}}
 subjects:
 - kind: ServiceAccount
-  name: {{`{{.ServiceAccount}}`}}
+  name: {{`{{.ServiceAccountName}}`}}
   namespace: {{`{{.Namespace}}`}}
 roleRef:
   kind: Role
