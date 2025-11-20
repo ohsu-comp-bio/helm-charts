@@ -94,7 +94,7 @@ spec:
       volumes:
       - name: config-volume
         configMap:
-          name: funnel-worker-config-{{.TaskId}}
+          name: funnel-worker-config-{{`{{.TaskId}}`}}
       {{`
       {{- if .NeedsPVC }}
       - name: funnel-storage-{{.TaskId}}
