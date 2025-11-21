@@ -53,7 +53,7 @@ spec:
       restartPolicy: OnFailure
       serviceAccountName: {{`{{.ServiceAccountName}}`}}
       containers:
-      - name: funnel-worker-{{.TaskId}}
+      - name: funnel-worker-{{`{{.TaskId}}`}}
         image: {{`{{.Image}}`}}
         imagePullPolicy: Always
         command: ["/bin/sh", "-c"]
