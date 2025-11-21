@@ -113,6 +113,23 @@ entries:
     version: 0.1.0
   funnel:
   - apiVersion: v2
+    appVersion: 2025-11-20.2
+    created: "2025-11-21T00:09:56.121152728Z"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.9.4
+    description: A toolkit for distributed task execution ⚙️
+    digest: 418888101464165f10bb8a0952f916bb1af61ac42c8d1b80597659a002242c1b
+    keywords:
+    - funnel
+    name: funnel
+    type: application
+    urls:
+    - https://github.com/ohsu-comp-bio/helm-charts/releases/download/funnel-0.1.67/funnel-0.1.67.tgz
+    version: 0.1.67
+  - apiVersion: v2
     appVersion: "2025-11-19"
     created: "2025-11-20T01:06:55.214285233Z"
     dependencies:
@@ -1211,6 +1228,18 @@ entries:
   gen3workflow:
   - apiVersion: v2
     appVersion: master
+    created: "2025-11-21T00:09:56.344278379Z"
+    description: Gen3 service for GA4GH TES integration
+    digest: d3b9b676d1473c10fab5c26eb4a65e4851036f781c61540643e42dc16d99cf2e
+    keywords:
+    - Gen3Workflow
+    name: gen3workflow
+    type: application
+    urls:
+    - https://github.com/ohsu-comp-bio/helm-charts/releases/download/gen3workflow-1.1.3/gen3workflow-1.1.3.tgz
+    version: 1.1.3
+  - apiVersion: v2
+    appVersion: master
     created: "2025-07-28T19:01:17.177075357Z"
     description: Gen3 service for GA4GH TES integration
     digest: 39ab72237e74ee713d22b6ebdbbb04f06af9a6459655123c9e57e2c9e3ce8f73
@@ -1300,4 +1329,4 @@ entries:
     urls:
     - https://github.com/ohsu-comp-bio/helm-charts/releases/download/tests-0.1.0/tests-0.1.0.tgz
     version: 0.1.0
-generated: "2025-11-20T01:06:55.214567612Z"
+generated: "2025-11-21T00:09:56.344590551Z"
