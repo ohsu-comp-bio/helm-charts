@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: gen3workflow-config
-data:
-  config.yaml: |-
-  {{ .Files.Get "files/config.yaml" | nindent 4 }}
