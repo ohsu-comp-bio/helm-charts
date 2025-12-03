@@ -268,7 +268,7 @@ HTCondor:
   DisableReconciler: true
   # ReconcileRate is how often the compute backend compares states in Funnel's backend
   # to those reported by the backend
-  ReconcileRate: 600s
+  ReconcileRate: 10s
   TemplateFile: ""
   Template: |
     universe = vanilla
@@ -299,7 +299,7 @@ PBS:
   DisableReconciler: true
   # ReconcileRate is how often the compute backend compares states in Funnel's backend
   # to those reported by the backend
-  ReconcileRate: 600s
+  ReconcileRate: 10s
   TemplateFile: ""
   Template: |
     #!bin/bash
@@ -345,7 +345,7 @@ Slurm:
   DisableReconciler: true
   # ReconcileRate is how often the compute backend compares states in Funnel's backend
   # to those reported by the backend
-  ReconcileRate: 600s
+  ReconcileRate: 10s
   TemplateFile: ""
   Template: |
     #!/bin/bash
@@ -372,7 +372,7 @@ AWSBatch:
   DisableReconciler: true
   # ReconcileRate is how often the compute backend compares states in Funnel's backend
   # to those reported by AWS Batch
-  ReconcileRate: 600s
+  ReconcileRate: 10s
   # JobDefinition can be either a name or the Amazon Resource Name (ARN).
   JobDefinition: "funnel-job-def"
   # JobQueue can be either a name or the Amazon Resource Name (ARN).
@@ -393,7 +393,7 @@ Kubernetes:
   DisableJobCleanup: false
   # ReconcileRate is how often the compute backend compares states in Funnel's backend
   # to those reported by the backend
-  ReconcileRate: 600s
+  ReconcileRate: 10s
   # Kubernetes Namespace to spawn jobs within
   Namespace: ""
   # Kubernetes Namespace to spawn jobs within
@@ -494,7 +494,8 @@ volumes:
 # If custom volumesMounts are specified, they will fully replace the default values.
 volumeMounts:
   - name: funnel-server-config-volume
-    mountPath: /etc/config
+    mountPath: /etc/config/funnel-server.yaml
+    subPath: funnel-server.yaml
 
   - name: plugin-volume
     mountPath: /opt/funnel/plugin-binaries
