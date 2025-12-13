@@ -15,7 +15,7 @@ spec:
   mountOptions:
     - allow-delete
     - allow-overwrite
-    - region={{`{{.Region}}`}}
+    -region={{`{{.Region}}`}}
     - file-mode=0755
     {{`{{- if .KmsKeyID}}`}}
     - sse aws:kms
