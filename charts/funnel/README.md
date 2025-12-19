@@ -1,6 +1,6 @@
 # funnel
 
-![Version: 0.1.71](https://img.shields.io/badge/Version-0.1.71-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2025-12-14](https://img.shields.io/badge/AppVersion-2025--12--14-informational?style=flat-square)
+![Version: 0.1.72](https://img.shields.io/badge/Version-0.1.72-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2025-12-19](https://img.shields.io/badge/AppVersion-2025--12--19-informational?style=flat-square)
 
 A toolkit for distributed task execution ⚙️
 
@@ -29,7 +29,7 @@ A toolkit for distributed task execution ⚙️
 | AmazonS3.SSE.KMSKey | string | `""` |  |
 | BoltDB.Path | string | `"./funnel-work-dir/funnel.db"` |  |
 | Compute | string | `"kubernetes"` |  |
-| Database | string | `"mongodb"` |  |
+| Database | string | `"postgres"` |  |
 | Datastore.CredentialsFile | string | `""` |  |
 | Datastore.Project | string | `""` |  |
 | DynamoDB.AWSConfig.Key | string | `""` |  |
@@ -38,7 +38,7 @@ A toolkit for distributed task execution ⚙️
 | DynamoDB.TableBasename | string | `"funnel"` |  |
 | Elastic.IndexPrefix | string | `"funnel"` |  |
 | Elastic.URL | string | `"http://localhost:9200"` |  |
-| EventWriters[0] | string | `"mongodb"` |  |
+| EventWriters[0] | string | `"postgres"` |  |
 | EventWriters[1] | string | `"log"` |  |
 | FTPStorage.Disabled | bool | `false` |  |
 | FTPStorage.Password | string | `"anonymous"` |  |
@@ -85,6 +85,13 @@ A toolkit for distributed task execution ⚙️
 | PBS.ReconcileRate | string | `"10s"` |  |
 | PBS.Template | string | `"#!bin/bash\n#PBS -N {{.TaskId}}\n#PBS -o {{.WorkDir}}/funnel-stdout\n#PBS -e {{.WorkDir}}/funnel-stderr\n{{if ne .Cpus 0 -}}\n{{printf \"#PBS -l nodes=1:ppn=%d\" .Cpus}}\n{{- end}}\n{{if ne .RamGb 0.0 -}}\n{{printf \"#PBS -l mem=%.0fgb\" .RamGb}}\n{{- end}}\n{{if ne .DiskGb 0.0 -}}\n{{printf \"#PBS -l file=%.0fgb\" .DiskGb}}\n{{- end}}\n\n{{.Executable}} worker run --config {{.Config}} --taskID {{.TaskId}}\n"` |  |
 | PBS.TemplateFile | string | `""` |  |
+| Postgres.AdminPassword | string | `"example"` |  |
+| Postgres.AdminUser | string | `"postgres"` |  |
+| Postgres.Database | string | `"funnel"` |  |
+| Postgres.Host | string | `"localhost"` |  |
+| Postgres.Password | string | `"example"` |  |
+| Postgres.Timeout.duration | string | `"300s"` |  |
+| Postgres.User | string | `"funnel"` |  |
 | RPCClient.MaxRetries | int | `10` |  |
 | RPCClient.ServerAddress | string | `"localhost:9090"` |  |
 | RPCClient.Timeout.duration | string | `"60s"` |  |
@@ -135,6 +142,7 @@ A toolkit for distributed task execution ⚙️
 | mongodb.auth.rootPassword | string | `"example"` |  |
 | mongodb.auth.rootUser | string | `"example"` |  |
 | mongodb.commonLabels.app | string | `"funnel-mongodb"` |  |
+| mongodb.enabled | bool | `false` |  |
 | mongodb.image.registry | string | `"public.ecr.aws"` |  |
 | mongodb.persistence.enabled | bool | `false` |  |
 | mongodb.persistence.size | string | `"1Gi"` |  |
