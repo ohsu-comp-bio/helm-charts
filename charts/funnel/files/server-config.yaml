@@ -149,6 +149,16 @@ MongoDB:
   Username: {{ .Values.MongoDB.Username }}
   Password: {{ .Values.MongoDB.Password }}
 
+Postgres:
+  Host: {{ .Values.Postgres.Host }}
+  Database: {{ .Values.Postgres.Database }}
+  User: {{ .Values.Postgres.User }}
+  Password: {{ .Values.Postgres.Password }}
+  AdminUser: {{ .Values.Postgres.AdminUser }}
+  AdminPassword: {{ .Values.Postgres.AdminPassword }}
+  Timeout:
+    duration: {{ .Values.Postgres.Timeout.duration }}
+
 Kafka:
   Servers:
   {{- if .Values.Kafka.Servers }}

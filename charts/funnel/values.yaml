@@ -23,6 +23,7 @@ labels:
 
 # Funnel Server (Task Database)
 mongodb:
+  enabled: false
   app: funnel-mongodb
   commonLabels:
     app: funnel-mongodb
@@ -81,7 +82,7 @@ storage:
 
 # The name of the active server database backend
 # Available backends: boltdb, badger, datastore, dynamodb, elastic, mongodb
-Database: mongodb
+Database: postgres
 
 # The name of the active compute backend
 # Available backends: local, htcondor, slurm, pbs, gridengine, manual, aws-batch, kubernetes
@@ -90,7 +91,7 @@ Compute: kubernetes
 # The name of the active event writer backend(s).
 # Available backends: log, boltdb, badger, datastore, dynamodb, elastic, mongodb, kafka
 EventWriters:
-  - mongodb
+  - postgres
   - log
 
 Logger:
@@ -253,6 +254,16 @@ MongoDB:
   # done on the database defined by the Database field.
   Username: example
   Password: example
+
+Postgres:
+  Host: localhost
+  Database: funnel
+  User: funnel
+  Password: example
+  AdminUser: postgres
+  AdminPassword: example
+  Timeout:
+    duration: 300s
 
 Kafka:
   Topic: funnel
