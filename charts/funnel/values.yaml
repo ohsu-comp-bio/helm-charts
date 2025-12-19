@@ -21,6 +21,23 @@ image:
 labels:
   app: funnel
 
+# Funnel Server (Task Database)
+mongodb:
+  enabled: false
+  app: funnel-mongodb
+  commonLabels:
+    app: funnel-mongodb
+  image:
+    registry: public.ecr.aws
+  architecture: standalone
+  auth:
+    enabled: true
+    rootUser: example
+    rootPassword: example
+  persistence:
+    enabled: false
+    size: 1Gi
+
 rbac:
   create: true
 
@@ -235,15 +252,18 @@ MongoDB:
     duration: 300s
   # Username and Password inform the credentials for the initial authentication
   # done on the database defined by the Database field.
-  Username: ""
-  Password: ""
+  Username: example
+  Password: example
 
 Postgres:
-  Addrs:
-    - "localhost"
-  Database: "funnel"
-  Username: ""
-  Password: ""
+  Host: localhost
+  Database: funnel
+  User: funnel
+  Password: example
+  AdminUser: postgres
+  AdminPassword: example
+  Timeout:
+    duration: 300s
 
 Kafka:
   Topic: funnel
