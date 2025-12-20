@@ -1,6 +1,6 @@
 # funnel
 
-![Version: 0.1.72](https://img.shields.io/badge/Version-0.1.72-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2025-12-19](https://img.shields.io/badge/AppVersion-2025--12--19-informational?style=flat-square)
+![Version: 0.1.74](https://img.shields.io/badge/Version-0.1.74-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2025-12-20](https://img.shields.io/badge/AppVersion-2025--12--20-informational?style=flat-square)
 
 A toolkit for distributed task execution ⚙️
 
@@ -9,6 +9,7 @@ A toolkit for distributed task execution ⚙️
 | Repository | Name | Version |
 |------------|------|---------|
 | https://charts.bitnami.com/bitnami | mongodb | 13.9.4 |
+| https://charts.bitnami.com/bitnami | postgresql | 18.1.15 |
 
 ## Values
 
@@ -146,6 +147,12 @@ A toolkit for distributed task execution ⚙️
 | mongodb.image.registry | string | `"public.ecr.aws"` |  |
 | mongodb.persistence.enabled | bool | `false` |  |
 | mongodb.persistence.size | string | `"1Gi"` |  |
+| postgresql.enabled | bool | `true` |  |
+| postgresql.global.postgresql.auth.database | string | `"funnel"` |  |
+| postgresql.global.postgresql.auth.password | string | `"example"` |  |
+| postgresql.global.postgresql.auth.postgresPassword | string | `"example"` |  |
+| postgresql.global.postgresql.auth.username | string | `"funnel"` |  |
+| postgresql.primary.persistence.enabled | bool | `false` |  |
 | rbac.create | bool | `true` |  |
 | replicaCount | int | `1` |  |
 | resources.limits.cpu | string | `"1000m"` |  |
