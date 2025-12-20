@@ -21,7 +21,21 @@ image:
 labels:
   app: funnel
 
-# Funnel Server (Task Database)
+# Default Funnel Server (Task Database)
+# Note: This is a non-persistent database for testing/demo purposes.
+postgresql:
+  enabled: true
+  global:
+    postgresql:
+      auth:
+        database: funnel
+        username: funnel
+        password: example
+        postgresPassword: example
+  primary:
+    persistence:
+      enabled: false
+
 mongodb:
   enabled: false
   app: funnel-mongodb
