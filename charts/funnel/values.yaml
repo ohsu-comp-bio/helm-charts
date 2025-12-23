@@ -70,10 +70,7 @@ resources:
     memory: 2048Mi
     ephemeral_storage: 2048Mi
 
-# AWS STS Source + Region for S3 CSI Driver
-authenticationSource: pod
-stsRegion: us-east-1
-
+# Kubernetes Service Settings
 service:
   type: ClusterIP
   httpPort: 8000
@@ -267,10 +264,9 @@ MongoDB:
   # Username and Password inform the credentials for the initial authentication
   # done on the database defined by the Database field.
   Username: example
-  Password: example
 
 Postgres:
-  Host: localhost
+  Host: funnel-postgresql.default.svc.cluster.local
   Database: funnel
   User: funnel
   Password: example

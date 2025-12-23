@@ -26,8 +26,6 @@ spec:
     volumeHandle: s3-csi-{{`{{.TaskId}}`}}
     volumeAttributes:
       bucketName: {{`{{.Bucket}}`}}
-      authenticationSource: {{ .Values.authenticationSource }}
-      stsRegion: {{ .Values.stsRegion }}
   claimRef:
     namespace: {{`{{.Namespace}}`}}
     name: funnel-worker-pvc-{{`{{.TaskId}}`}}
