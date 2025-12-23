@@ -1,6 +1,6 @@
 # funnel
 
-![Version: 0.1.73](https://img.shields.io/badge/Version-0.1.73-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2025-12-20](https://img.shields.io/badge/AppVersion-2025--12--20-informational?style=flat-square)
+![Version: 0.1.74](https://img.shields.io/badge/Version-0.1.74-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2025-12-22](https://img.shields.io/badge/AppVersion-2025--12--22-informational?style=flat-square)
 
 A toolkit for distributed task execution ⚙️
 
@@ -73,7 +73,6 @@ A toolkit for distributed task execution ⚙️
 | Logger.outputFile | string | `""` |  |
 | MongoDB.Addrs | list | `[]` |  |
 | MongoDB.Database | string | `"funnel"` |  |
-| MongoDB.Password | string | `"example"` |  |
 | MongoDB.Timeout.duration | string | `"300s"` |  |
 | MongoDB.Username | string | `"example"` |  |
 | Node.ID | string | `""` |  |
@@ -89,7 +88,7 @@ A toolkit for distributed task execution ⚙️
 | Postgres.AdminPassword | string | `"example"` |  |
 | Postgres.AdminUser | string | `"postgres"` |  |
 | Postgres.Database | string | `"funnel"` |  |
-| Postgres.Host | string | `"localhost"` |  |
+| Postgres.Host | string | `"funnel-postgresql.default.svc.cluster.local"` |  |
 | Postgres.Password | string | `"example"` |  |
 | Postgres.Timeout.duration | string | `"300s"` |  |
 | Postgres.User | string | `"funnel"` |  |
@@ -122,7 +121,6 @@ A toolkit for distributed task execution ⚙️
 | Worker.MaxParallelTransfers | int | `10` |  |
 | Worker.PollingRate | string | `"5s"` |  |
 | Worker.WorkDir | string | `"./funnel-work-dir"` |  |
-| authenticationSource | string | `"pod"` |  |
 | backoffLimit | int | `1` |  |
 | completions | int | `1` |  |
 | image.initContainers[0].command[0] | string | `"cp"` |  |
@@ -170,7 +168,6 @@ A toolkit for distributed task execution ⚙️
 | storage.driver | string | `"aws-s3"` |  |
 | storage.provisioner | string | `"s3.csi.aws.com"` |  |
 | storage.size | string | `"10Mi"` |  |
-| stsRegion | string | `"us-east-1"` |  |
 | volumeMounts[0].mountPath | string | `"/etc/config/funnel-server.yaml"` |  |
 | volumeMounts[0].name | string | `"funnel-server-config-volume"` |  |
 | volumeMounts[0].subPath | string | `"funnel-server.yaml"` |  |
