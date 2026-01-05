@@ -1,6 +1,6 @@
 # funnel
 
-![Version: 0.1.75](https://img.shields.io/badge/Version-0.1.75-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2025-12-22](https://img.shields.io/badge/AppVersion-2025--12--22-informational?style=flat-square)
+![Version: 0.1.76](https://img.shields.io/badge/Version-0.1.76-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2025-12-22](https://img.shields.io/badge/AppVersion-2025--12--22-informational?style=flat-square)
 
 A toolkit for distributed task execution ⚙️
 
@@ -121,6 +121,7 @@ A toolkit for distributed task execution ⚙️
 | Worker.MaxParallelTransfers | int | `10` |  |
 | Worker.PollingRate | string | `"5s"` |  |
 | Worker.WorkDir | string | `"./funnel-work-dir"` |  |
+| authenticationSource | string | `"pod"` |  |
 | backoffLimit | int | `1` |  |
 | completions | int | `1` |  |
 | image.initContainers[0].command[0] | string | `"cp"` |  |
@@ -168,6 +169,7 @@ A toolkit for distributed task execution ⚙️
 | storage.driver | string | `"aws-s3"` |  |
 | storage.provisioner | string | `"s3.csi.aws.com"` |  |
 | storage.size | string | `"10Mi"` |  |
+| stsRegion | string | `"us-east-1"` |  |
 | volumeMounts[0].mountPath | string | `"/etc/config/funnel-server.yaml"` |  |
 | volumeMounts[0].name | string | `"funnel-server-config-volume"` |  |
 | volumeMounts[0].subPath | string | `"funnel-server.yaml"` |  |
