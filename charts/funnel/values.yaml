@@ -70,6 +70,10 @@ resources:
     memory: 2048Mi
     ephemeral_storage: 2048Mi
 
+# AWS STS Source + Region for S3 CSI Driver
+authenticationSource: pod
+stsRegion: us-east-1
+
 # Kubernetes Service Settings
 service:
   type: ClusterIP
