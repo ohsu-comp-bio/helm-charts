@@ -1,6 +1,6 @@
 # backups
 
-![Version: 0.4.1](https://img.shields.io/badge/Version-0.4.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.13.0](https://img.shields.io/badge/AppVersion-1.13.0-informational?style=flat-square)
+![Version: 0.5.0](https://img.shields.io/badge/Version-0.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.15.0](https://img.shields.io/badge/AppVersion-1.15.0-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -10,7 +10,7 @@ A Helm chart for Kubernetes
 |-----|------|---------|-------------|
 | backups.grip.graph | string | `"CALYPR"` |  |
 | backups.grip.host | string | `"grip-service.default.svc.cluster.local"` |  |
-| backups.image | string | `"quay.io/ohsu-comp-bio/backup-service:docs-contributing.md"` |  |
+| backups.image | string | `"quay.io/ohsu-comp-bio/backup-service:main"` |  |
 | backups.postgres.host | string | `"local-postgresql.default.svc.cluster.local"` |  |
 | backups.postgres.secret | string | `"local-postgresql"` |  |
 | backups.postgres.user | string | `"postgres"` |  |
