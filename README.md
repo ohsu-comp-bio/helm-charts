@@ -4,7 +4,7 @@
 >
 > The larger CALYPR "Umbrella" Helm Chart may be found at [calypr/gen3-helm](https://github.com/calypr/gen3-helm)
 >
-> Moving forward, this repo will likely be merged into [calypr/gen3-helm](https://github.com/calypr/gen3-helm) at which point collaborators can be notified of the change (unless it's determined to keep separate Helm Chart repos for any reason). 
+> Moving forward, this repo will likely be merged into [calypr/gen3-helm](https://github.com/calypr/gen3-helm) at which point collaborators can be notified of the change.
 
 # Helm Charts 📚
 
