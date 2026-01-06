@@ -1,5 +1,10 @@
-> [!NOTE]
-> Adapted from the [Gen3 Helm Charts repo](https://github.com/uc-cdis/gen3-helm) from the [Center for Translational Data Science](https://github.com/uc-cdis)
+> [!IMPORTANT]
+>
+> This Helm Chart repo has traditionally been used for deploying CALYPR-related services by external collaborators (e.g. Gen3-Workflow + Funnel) 
+>
+> The larger CALYPR "Umbrella" Helm Chart may be found at [calypr/gen3-helm](https://github.com/calypr/gen3-helm)
+>
+> Moving forward, this repo will likely be merged into [calypr/gen3-helm](https://github.com/calypr/gen3-helm) at which point collaborators can be notified of the change (unless it's determined to keep separate Helm Chart repos for any reason). 
 
 # Helm Charts 📚
 
@@ -36,11 +41,6 @@ helm upgrade --install funnel ohsu/grip --create-namespace --namespace grip
 helm upgrade --install funnel ohsu/funnel --create-namespace --namespace funnel
 ```
 
-# TODO 🌀
-
-- [x] Add Github Actions to Funnel + Grip to automatically create and publish Helm Charts (synced with commits)
-- [x] Add full unarchived (i.e. non-`tar.gz`) Helm Charts to repo for transparency/easier debugging
-
 # Additional Resources 📚
 
 - [Helm Repo](https://ohsu-comp-bio.github.io/helm-charts)
@@ -50,3 +50,7 @@ helm upgrade --install funnel ohsu/funnel --create-namespace --namespace funnel
 - [Helm Charts](https://github.com/ohsu-comp-bio/funnel/tree/develop/deployments/kubernetes/helm/funnel)
 
 - [The Chart Best Practices Guide](https://helm.sh/docs/chart_best_practices/)
+
+# Credits 🤝
+
+Adapted from the [Gen3 Helm Charts repo](https://github.com/uc-cdis/gen3-helm) from the [Center for Translational Data Science](https://github.com/uc-cdis)
