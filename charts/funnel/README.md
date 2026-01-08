@@ -1,6 +1,6 @@
 # funnel
 
-![Version: 0.1.77](https://img.shields.io/badge/Version-0.1.77-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2025-12-22](https://img.shields.io/badge/AppVersion-2025--12--22-informational?style=flat-square)
+![Version: 0.1.78](https://img.shields.io/badge/Version-0.1.78-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2027-01-07.8](https://img.shields.io/badge/AppVersion-2027--01--07.8-informational?style=flat-square)
 
 A toolkit for distributed task execution ⚙️
 
@@ -40,7 +40,8 @@ A toolkit for distributed task execution ⚙️
 | Elastic.IndexPrefix | string | `"funnel"` |  |
 | Elastic.URL | string | `"http://localhost:9200"` |  |
 | EventWriters[0] | string | `"postgres"` |  |
-| EventWriters[1] | string | `"log"` |  |
+| EventWriters[1] | string | `"mongodb"` |  |
+| EventWriters[2] | string | `"log"` |  |
 | FTPStorage.Disabled | bool | `false` |  |
 | FTPStorage.Password | string | `"anonymous"` |  |
 | FTPStorage.Timeout | string | `"10s"` |  |
@@ -73,6 +74,7 @@ A toolkit for distributed task execution ⚙️
 | Logger.outputFile | string | `""` |  |
 | MongoDB.Addrs | list | `[]` |  |
 | MongoDB.Database | string | `"funnel"` |  |
+| MongoDB.Password | string | `"example"` |  |
 | MongoDB.Timeout.duration | string | `"300s"` |  |
 | MongoDB.Username | string | `"example"` |  |
 | Node.ID | string | `""` |  |
