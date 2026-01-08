@@ -107,6 +107,7 @@ Compute: kubernetes
 # Available backends: log, boltdb, badger, datastore, dynamodb, elastic, mongodb, kafka
 EventWriters:
   - postgres
+  - mongodb
   - log
 
 Logger:
@@ -268,6 +269,7 @@ MongoDB:
   # Username and Password inform the credentials for the initial authentication
   # done on the database defined by the Database field.
   Username: example
+  Password: example
 
 Postgres:
   Host: funnel-postgresql.default.svc.cluster.local
