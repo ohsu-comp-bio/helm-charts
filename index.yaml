@@ -123,6 +123,27 @@ entries:
     version: 0.1.0
   funnel:
   - apiVersion: v2
+    appVersion: "2026-01-12"
+    created: "2026-01-12T22:08:19.960743767Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.13
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.9.4
+    description: A toolkit for distributed task execution ⚙️
+    digest: 5834b1043671d39f2726c37ecd5c35fd4864ce3c6c78aa88cfb0826e1acbe9dd
+    keywords:
+    - funnel
+    name: funnel
+    type: application
+    urls:
+    - https://github.com/ohsu-comp-bio/helm-charts/releases/download/funnel-0.1.79/funnel-0.1.79.tgz
+    version: 0.1.79
+  - apiVersion: v2
     appVersion: 2027-01-07.8
     created: "2026-01-08T04:29:27.575859065Z"
     dependencies:
@@ -1550,4 +1571,4 @@ entries:
     urls:
     - https://github.com/ohsu-comp-bio/helm-charts/releases/download/tests-0.1.0/tests-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-08T04:29:27.576190362Z"
+generated: "2026-01-12T22:08:19.961063494Z"
