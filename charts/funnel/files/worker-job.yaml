@@ -69,13 +69,13 @@ spec:
         # TODO: Make the image + tag configurable
         image: {{`{{.Image}}`}}
         imagePullPolicy: Always
+        command:
+        - /bin/sh
+        - -c
         args:
-          - "worker"
-          - "run"
-          - "--config"
-          - "/etc/config/funnel-worker.yaml"
-          - "--taskID"
-          - {{`{{.TaskId}}`}}
+        - |
+          # echo "Zzz..." && sleep infinity
+          funnel worker run --config /etc/config/funnel-worker.yaml --taskID {{`{{.TaskId}}`}}
         resources:
           requests:
             cpu: {{ .Values.resources.requests.cpu }}
