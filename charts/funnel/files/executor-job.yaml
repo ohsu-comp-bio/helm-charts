@@ -56,31 +56,7 @@ spec:
       - name: funnel-worker-{{`{{.TaskId}}`}}
         image: {{`{{.Image}}`}}
         imagePullPolicy: Always
-
-        # ------------------------------------------------------------------
-        # Dynamic Command Logic
-        # 1. Check if this is a Nextflow task by looking for .command.run
-        # 2. If Nextflow: Run the script directly (bypassing the fragile wrapper)
-        # 3. If Generic: Run the standard {{.Command}} requested by the client
-        # ------------------------------------------------------------------
-        {{`
-        {{- $isNextflow := false }}
-        {{- range $v := .Volumes }}
-          {{- if eq $v.ContainerPath "/work/.command.run" }}
-            {{- $isNextflow = true }}
-          {{- end }}
-        {{- end }}
-
-        {{- if $isNextflow }}
-        command: ["/bin/sh", "-c"]
-        args:
-        - "bash /work/.command.run 2>&1 | tee /work/.command.log"
-        {{- else }}
-        command: {{.Command}}
-        {{- end }}
-        `}}
-        # ------------------------------------------------------------------
-
+        command: {{`{{.Command}}`}}
         workingDir: {{`{{.Workdir}}`}}
         resources:
           requests:
