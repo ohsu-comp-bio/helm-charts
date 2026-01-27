@@ -56,7 +56,8 @@ spec:
       - name: funnel-worker-{{`{{.TaskId}}`}}
         image: {{`{{.Image}}`}}
         imagePullPolicy: Always
-        command: {{`{{.Command}}`}}
+        command: ["/bin/sh", "-c"]
+        args: {{`{{.Command}}`}}
         workingDir: {{`{{.Workdir}}`}}
         resources:
           requests:
