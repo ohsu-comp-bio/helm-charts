@@ -66,7 +66,6 @@ spec:
       restartPolicy: OnFailure
       containers:
       - name: funnel-worker-{{`{{.TaskId}}`}}
-        # TODO: Make the image + tag configurable
         image: {{`{{.Image}}`}}
         imagePullPolicy: Always
         command:
