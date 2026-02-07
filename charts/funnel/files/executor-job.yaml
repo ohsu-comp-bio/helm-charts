@@ -50,14 +50,16 @@ spec:
       {{- end }}
       `}}
 
-      restartPolicy: OnFailure
+      restartPolicy: {{ .Values.restartPolicy.executor }}
       serviceAccountName: {{`{{.ServiceAccountName}}`}}
       containers:
       - name: funnel-worker-{{`{{.TaskId}}`}}
         image: {{`{{.Image}}`}}
         imagePullPolicy: Always
         command: ["/bin/sh", "-c"]
-        args: {{`{{.Command}}`}}
+        args: 
+          - |
+            {{`{{range $i, $cmd := .Command}}{{if $i}} {{end}}{{$cmd}}{{end}}`}}
         workingDir: {{`{{.Workdir}}`}}
         resources:
           requests:

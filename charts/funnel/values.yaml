@@ -58,6 +58,9 @@ rbac:
 # Backoff/Completions for Worker + Executor Jobs
 backoffLimit: 1
 completions: 1
+restartPolicy:
+  executor: OnFailure
+  worker: Never
 
 # Resource Requests/Limits for Worker + Executor Jobs
 resources:

@@ -63,7 +63,7 @@ spec:
       `}}
 
       serviceAccountName: {{`{{.ServiceAccountName}}`}}
-      restartPolicy: OnFailure
+      restartPolicy: {{ .Values.restartPolicy.worker }}
       containers:
       - name: funnel-worker-{{`{{.TaskId}}`}}
         image: {{`{{.Image}}`}}
