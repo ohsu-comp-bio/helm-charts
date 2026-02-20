@@ -1,6 +1,6 @@
 # funnel
 
-![Version: 0.1.91](https://img.shields.io/badge/Version-0.1.91-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2026-02-13](https://img.shields.io/badge/AppVersion-2026--02--13-informational?style=flat-square)
+![Version: 0.1.92](https://img.shields.io/badge/Version-0.1.92-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2026-02-13](https://img.shields.io/badge/AppVersion-2026--02--13-informational?style=flat-square)
 
 A toolkit for distributed task execution ⚙️
 
@@ -124,7 +124,7 @@ A toolkit for distributed task execution ⚙️
 | Worker.PollingRate | string | `"5s"` |  |
 | Worker.WorkDir | string | `"./funnel-work-dir"` |  |
 | authenticationSource | string | `"pod"` |  |
-| backoffLimit | int | `1` |  |
+| backoffLimit | int | `0` |  |
 | completions | int | `1` |  |
 | image.initContainers[0].command[0] | string | `"cp"` |  |
 | image.initContainers[0].command[1] | string | `"/app/build/plugins/authorizer"` |  |
