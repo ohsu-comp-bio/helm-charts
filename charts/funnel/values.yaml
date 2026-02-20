@@ -56,7 +56,11 @@ rbac:
   create: true
 
 # Backoff/Completions for Worker + Executor Jobs
-backoffLimit: 1
+# Setting `backoffLimit` to 0 means no retries 
+# Setting `completions` to 1 means the job will be marked as complete after a single successful execution.
+# Funnel should not be restarting jobs (by default) so that clients can choose their preferred retry behavior
+# TODO: Should Funnel offer a built-in retry mechanism that users can configure on a per-task basis?
+backoffLimit: 0
 completions: 1
 restartPolicy:
   executor: OnFailure
