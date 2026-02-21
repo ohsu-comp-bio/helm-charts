@@ -446,6 +446,17 @@ Kubernetes:
   PVTemplate: ""
   PVCTemplate: ""
 
+  # Resource Requests/Limits for Executor Jobs
+  Resources:
+    Defaults:
+      Cpus: 100m
+      RamGb: 512Mi
+      DiskGb: 512Mi
+    Limits:
+      Cpus: 8000m
+      RamGb: 4096Mi
+      DiskGb: 4096Mi
+
 #-------------------------------------------------------------------------------
 # Storage
 #-------------------------------------------------------------------------------

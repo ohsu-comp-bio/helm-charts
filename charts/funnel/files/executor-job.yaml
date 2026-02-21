@@ -61,9 +61,13 @@ spec:
         workingDir: {{`{{.Workdir}}`}}
         resources:
           requests:
-            cpu: {{ .Values.resources.requests.cpu }}
-            memory: {{ .Values.resources.requests.memory }}
-            ephemeral-storage: {{ .Values.resources.requests.ephemeral_storage }}
+            cpu: {{`{{ .Cpus }}`}}
+            memory: {{`{{ .RamGb }}`}}Gi
+            ephemeral-storage: {{`{{ .DiskGb }}`}}Gi
+          limits:
+            cpu: {{`{{ .CpusLimit }}`}}
+            memory: {{`{{ .RamGbLimit }}`}}Gi
+            ephemeral-storage: {{`{{ .DiskGbLimit }}`}}Gi
 
         volumeMounts:
         {{`

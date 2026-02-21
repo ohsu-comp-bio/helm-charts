@@ -9,6 +9,17 @@ Kubernetes:
   JobsNamespace: {{ .Values.Kubernetes.JobsNamespace }}
   ServiceAccount: {{ .Values.Kubernetes.ServiceAccount }}
 
+  Resources:
+    Defaults:
+      Cpus: {{ .Values.Kubernetes.Resources.Defaults.Cpus }}
+      RamGb: {{ .Values.Kubernetes.Resources.Defaults.RamGb }}
+      DiskGb: {{ .Values.Kubernetes.Resources.Defaults.DiskGb }}
+    Limits:
+      Cpus: {{ .Values.Kubernetes.Resources.Limits.Cpus }}
+      RamGb: {{ .Values.Kubernetes.Resources.Limits.RamGb }}
+      DiskGb: {{ .Values.Kubernetes.Resources.Limits.DiskGb }}
+
+
   NodeSelector:
     {{- if .Values.Kubernetes.NodeSelector }}
     {{- range $key, $value := .Values.Kubernetes.NodeSelector }}
