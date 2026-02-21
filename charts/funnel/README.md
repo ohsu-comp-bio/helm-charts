@@ -1,6 +1,6 @@
 # funnel
 
-![Version: 0.1.95](https://img.shields.io/badge/Version-0.1.95-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2026-02-20.1](https://img.shields.io/badge/AppVersion-2026--02--20.1-informational?style=flat-square)
+![Version: 0.1.96](https://img.shields.io/badge/Version-0.1.96-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2026-02-21](https://img.shields.io/badge/AppVersion-2026--02--21-informational?style=flat-square)
 
 A toolkit for distributed task execution ⚙️
 
@@ -66,6 +66,12 @@ A toolkit for distributed task execution ⚙️
 | Kubernetes.PVCTemplate | string | `""` |  |
 | Kubernetes.PVTemplate | string | `""` |  |
 | Kubernetes.ReconcileRate | string | `"10s"` |  |
+| Kubernetes.Resources.Defaults.Cpus | string | `"100m"` |  |
+| Kubernetes.Resources.Defaults.DiskGb | string | `"512Mi"` |  |
+| Kubernetes.Resources.Defaults.RamGb | string | `"512Mi"` |  |
+| Kubernetes.Resources.Limits.Cpus | string | `"8000m"` |  |
+| Kubernetes.Resources.Limits.DiskGb | string | `"4096Mi"` |  |
+| Kubernetes.Resources.Limits.RamGb | string | `"4096Mi"` |  |
 | Kubernetes.ServiceAccount | string | `""` |  |
 | Kubernetes.Tolerations | list | `[]` |  |
 | Kubernetes.WorkerTemplate | string | `""` |  |
