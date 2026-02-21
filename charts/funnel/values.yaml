@@ -66,7 +66,8 @@ restartPolicy:
   executor: OnFailure
   worker: Never
 
-# Resource Requests/Limits for Worker + Executor Jobs
+# Resource Requests/Limits for Worker Jobs
+# Executor resource defaults/limits are in Kubernetes.Resources
 resources:
   requests:
     cpu: 100m
