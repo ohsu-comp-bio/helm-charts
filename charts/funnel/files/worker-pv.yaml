@@ -13,8 +13,9 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   mountOptions:
-    - allow-delete
-    - allow-overwrite
+    # Testing
+    # - allow-delete
+    # - allow-overwrite
     - region={{`{{.Region}}`}}
     - file-mode=0755
     - prefix=funnel-temp-files/
