@@ -1,6 +1,6 @@
 # funnel
 
-![Version: 0.1.98-rc.4](https://img.shields.io/badge/Version-0.1.98--rc.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2026-02-23](https://img.shields.io/badge/AppVersion-2026--02--23-informational?style=flat-square)
+![Version: 0.1.98-rc.5](https://img.shields.io/badge/Version-0.1.98--rc.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2026-02-23](https://img.shields.io/badge/AppVersion-2026--02--23-informational?style=flat-square)
 
 A toolkit for distributed task execution ⚙️
 
@@ -76,7 +76,7 @@ A toolkit for distributed task execution ⚙️
 | Kubernetes.Tolerations | list | `[]` |  |
 | Kubernetes.WorkerTemplate | string | `""` |  |
 | LocalStorage.AllowedDirs[0] | string | `"./"` |  |
-| Logger.level | string | `"debug"` |  |
+| Logger.level | string | `"info"` |  |
 | Logger.outputFile | string | `""` |  |
 | MongoDB.Addrs | list | `[]` |  |
 | MongoDB.Database | string | `"funnel"` |  |
@@ -159,6 +159,8 @@ A toolkit for distributed task execution ⚙️
 | postgresql.global.postgresql.auth.password | string | `"example"` |  |
 | postgresql.global.postgresql.auth.postgresPassword | string | `"example"` |  |
 | postgresql.global.postgresql.auth.username | string | `"funnel"` |  |
+| postgresql.image.repository | string | `"bitnamilegacy/postgresql"` |  |
+| postgresql.image.tag | string | `"11.9.0"` |  |
 | postgresql.primary.persistence.enabled | bool | `false` |  |
 | rbac.create | bool | `true` |  |
 | replicaCount | int | `1` |  |
