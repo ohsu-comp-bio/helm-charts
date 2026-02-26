@@ -25,6 +25,9 @@ labels:
 # Note: This is a non-persistent database for testing/demo purposes.
 postgresql:
   enabled: true
+  image:
+    repository: bitnamilegacy/postgresql
+    tag: 11.9.0
   global:
     postgresql:
       auth:
@@ -120,7 +123,7 @@ EventWriters:
 
 Logger:
   # Logging levels: debug, info, error
-  level: debug
+  level: info
   # Write logs to this path. If empty, logs are written to stderr.
   outputFile: ""
 
