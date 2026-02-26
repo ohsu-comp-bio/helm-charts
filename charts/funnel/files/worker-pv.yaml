@@ -15,7 +15,7 @@ spec:
   mountOptions:
     # Testing:
     # - allow-delete
-    # - allow-overwrite
+    - allow-overwrite
     - incremental-upload
     - region={{`{{.Region}}`}}
     - file-mode=0755
