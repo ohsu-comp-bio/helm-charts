@@ -123,17 +123,20 @@ EventWriters:
 
 Logger:
   # Logging levels: debug, info, error
-  level: info
+  Level: info
   # Write logs to this path. If empty, logs are written to stderr.
-  outputFile: ""
+  OutputFile: ""
   # Log format: json or text
-  formatter: text
+  Formatter: text
   # Text format settings
-  text_format:
+  TextFormat:
     # Try to force colors/rich format in text output
-    forceColors: false
+    ForceColors: true
     # Include full timestamps in text output
-    fullTimestamp: true
+    FullTimestamp: true
+    # Format for timestamps. RFC3339 is default.
+    TimestampFormat: "2006-01-02T15:04:05Z07:00"
+
 
 Server:
   # Hostname of the Funnel server.

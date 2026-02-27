@@ -76,11 +76,12 @@ EventWriters:
 
 Logger:
   level: {{ .Values.Logger.level }}
-  outputFile: "{{ .Values.Logger.outputFile }}"
-  formatter: {{ .Values.Logger.formatter }}
-  text_format:
-    forceColors: {{ .Values.Logger.text_format.forceColors }}
-    fullTimestamp: {{ .Values.Logger.text_format.fullTimestamp }}
+  outputFile: "{{ .Values.Logger.OutputFile }}"
+  formatter: {{ .Values.Logger.Formatter }}
+  TextFormat:
+    ForceColors: {{ .Values.Logger.TextFormat.ForceColors }}
+    FullTimestamp: {{ .Values.Logger.TextFormat.FullTimestamp }}
+    TimestampFormat: {{ .Values.Logger.TextFormat.TimestampFormat }}
 
 Server:
   HostName: "{{ .Values.Server.HostName }}"
