@@ -1,6 +1,6 @@
 # funnel
 
-![Version: 0.1.98-rc.8](https://img.shields.io/badge/Version-0.1.98--rc.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2026-02-26.1](https://img.shields.io/badge/AppVersion-2026--02--26.1-informational?style=flat-square)
+![Version: 0.1.98-rc.9](https://img.shields.io/badge/Version-0.1.98--rc.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2026-02-27](https://img.shields.io/badge/AppVersion-2026--02--27-informational?style=flat-square)
 
 A toolkit for distributed task execution ⚙️
 
@@ -76,11 +76,12 @@ A toolkit for distributed task execution ⚙️
 | Kubernetes.Tolerations | list | `[]` |  |
 | Kubernetes.WorkerTemplate | string | `""` |  |
 | LocalStorage.AllowedDirs[0] | string | `"./"` |  |
-| Logger.formatter | string | `"text"` |  |
-| Logger.level | string | `"info"` |  |
-| Logger.outputFile | string | `""` |  |
-| Logger.text_format.forceColors | bool | `false` |  |
-| Logger.text_format.fullTimestamp | bool | `true` |  |
+| Logger.Formatter | string | `"text"` |  |
+| Logger.Level | string | `"info"` |  |
+| Logger.OutputFile | string | `""` |  |
+| Logger.TextFormat.ForceColors | bool | `true` |  |
+| Logger.TextFormat.FullTimestamp | bool | `true` |  |
+| Logger.TextFormat.TimestampFormat | string | `"2006-01-02T15:04:05Z07:00"` |  |
 | MongoDB.Addrs | list | `[]` |  |
 | MongoDB.Database | string | `"funnel"` |  |
 | MongoDB.Password | string | `"example"` |  |
