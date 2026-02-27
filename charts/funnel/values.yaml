@@ -126,6 +126,14 @@ Logger:
   level: info
   # Write logs to this path. If empty, logs are written to stderr.
   outputFile: ""
+  # Log format: json or text
+  formatter: text
+  # Text format settings
+  text_format:
+    # Try to force colors/rich format in text output
+    forceColors: false
+    # Include full timestamps in text output
+    fullTimestamp: true
 
 Server:
   # Hostname of the Funnel server.

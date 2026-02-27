@@ -19,7 +19,6 @@ Kubernetes:
       RamGb: {{ .Values.Kubernetes.Resources.Limits.RamGb }}
       DiskGb: {{ .Values.Kubernetes.Resources.Limits.DiskGb }}
 
-
   NodeSelector:
     {{- if .Values.Kubernetes.NodeSelector }}
     {{- range $key, $value := .Values.Kubernetes.NodeSelector }}
@@ -77,13 +76,17 @@ EventWriters:
 
 Logger:
   level: {{ .Values.Logger.level }}
-  outputFile: {{ .Values.Logger.outputFile }}
+  outputFile: "{{ .Values.Logger.outputFile }}"
+  formatter: {{ .Values.Logger.formatter }}
+  text_format:
+    forceColors: {{ .Values.Logger.text_format.forceColors }}
+    fullTimestamp: {{ .Values.Logger.text_format.fullTimestamp }}
 
 Server:
   HostName: "{{ .Values.Server.HostName }}"
   HTTPPort: "{{ .Values.Server.HTTPPort }}"
   RPCPort: "{{ .Values.Server.RPCPort }}"
-  DisableHTTPCache: {{ .Values.Server.DisableHttpCache }}
+  DisableHTTPCache: {{ .Values.Server.DisableHTTPCache }}
 
 RPCClient:
   ServerAddress: {{ .Values.RPCClient.ServerAddress }}
