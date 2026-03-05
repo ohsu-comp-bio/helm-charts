@@ -22,6 +22,9 @@ labels:
 # Note: This is a non-persistent database for testing/demo purposes.
 postgresql:
   enabled: true
+  image:
+    repository: bitnamilegacy/postgresql
+    tag: 11.9.0
   global:
     postgresql:
       auth:
@@ -53,13 +56,18 @@ rbac:
   create: true
 
 # Backoff/Completions for Worker + Executor Jobs
-backoffLimit: 1
+# Setting `backoffLimit` to 0 means no retries 
+# Setting `completions` to 1 means the job will be marked as complete after a single successful execution.
+# Funnel should not be restarting jobs (by default) so that clients can choose their preferred retry behavior
+# TODO: Should Funnel offer a built-in retry mechanism that users can configure on a per-task basis?
+backoffLimit: 0
 completions: 1
 restartPolicy:
   executor: OnFailure
   worker: Never
 
-# Resource Requests/Limits for Worker + Executor Jobs
+# Resource Requests/Limits for Worker Jobs
+# Executor resource defaults/limits are in Kubernetes.Resources
 resources:
   requests:
     cpu: 100m
@@ -112,9 +120,20 @@ EventWriters:
 
 Logger:
   # Logging levels: debug, info, error
-  level: debug
+  Level: info
   # Write logs to this path. If empty, logs are written to stderr.
-  outputFile: ""
+  OutputFile: ""
+  # Log format: json or text
+  Formatter: text
+  # Text format settings
+  TextFormat:
+    # Try to force colors/rich format in text output
+    ForceColors: true
+    # Include full timestamps in text output
+    FullTimestamp: true
+    # Format for timestamps. RFC3339 is default.
+    TimestampFormat: "2006-01-02T15:04:05Z07:00"
+
 
 Server:
   # Hostname of the Funnel server.
@@ -440,6 +459,17 @@ Kubernetes:
   ExecutorTemplate: ""
   PVTemplate: ""
   PVCTemplate: ""
+
+  # Resource Requests/Limits for Executor Jobs
+  Resources:
+    Defaults:
+      Cpus: 100m
+      RamGb: 512Mi
+      DiskGb: 512Mi
+    Limits:
+      Cpus: 8000m
+      RamGb: 4096Mi
+      DiskGb: 4096Mi
 
 #-------------------------------------------------------------------------------
 # Storage

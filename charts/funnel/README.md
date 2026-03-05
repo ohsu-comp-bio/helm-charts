@@ -1,6 +1,6 @@
 # funnel
 
-![Version: 0.1.90](https://img.shields.io/badge/Version-0.1.90-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2026-02-11.1](https://img.shields.io/badge/AppVersion-2026--02--11.1-informational?style=flat-square)
+![Version: 0.1.98-rc.13](https://img.shields.io/badge/Version-0.1.98--rc.13-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2026-03-01.2](https://img.shields.io/badge/AppVersion-2026--03--01.2-informational?style=flat-square)
 
 A toolkit for distributed task execution ⚙️
 
@@ -66,12 +66,22 @@ A toolkit for distributed task execution ⚙️
 | Kubernetes.PVCTemplate | string | `""` |  |
 | Kubernetes.PVTemplate | string | `""` |  |
 | Kubernetes.ReconcileRate | string | `"10s"` |  |
+| Kubernetes.Resources.Defaults.Cpus | string | `"100m"` |  |
+| Kubernetes.Resources.Defaults.DiskGb | string | `"512Mi"` |  |
+| Kubernetes.Resources.Defaults.RamGb | string | `"512Mi"` |  |
+| Kubernetes.Resources.Limits.Cpus | string | `"8000m"` |  |
+| Kubernetes.Resources.Limits.DiskGb | string | `"4096Mi"` |  |
+| Kubernetes.Resources.Limits.RamGb | string | `"4096Mi"` |  |
 | Kubernetes.ServiceAccount | string | `""` |  |
 | Kubernetes.Tolerations | list | `[]` |  |
 | Kubernetes.WorkerTemplate | string | `""` |  |
 | LocalStorage.AllowedDirs[0] | string | `"./"` |  |
-| Logger.level | string | `"debug"` |  |
-| Logger.outputFile | string | `""` |  |
+| Logger.Formatter | string | `"text"` |  |
+| Logger.Level | string | `"info"` |  |
+| Logger.OutputFile | string | `""` |  |
+| Logger.TextFormat.ForceColors | bool | `true` |  |
+| Logger.TextFormat.FullTimestamp | bool | `true` |  |
+| Logger.TextFormat.TimestampFormat | string | `"2006-01-02T15:04:05Z07:00"` |  |
 | MongoDB.Addrs | list | `[]` |  |
 | MongoDB.Database | string | `"funnel"` |  |
 | MongoDB.Password | string | `"example"` |  |
@@ -124,7 +134,7 @@ A toolkit for distributed task execution ⚙️
 | Worker.PollingRate | string | `"5s"` |  |
 | Worker.WorkDir | string | `"./funnel-work-dir"` |  |
 | authenticationSource | string | `"pod"` |  |
-| backoffLimit | int | `1` |  |
+| backoffLimit | int | `0` |  |
 | completions | int | `1` |  |
 | image.initContainers[0].command[0] | string | `"cp"` |  |
 | image.initContainers[0].command[1] | string | `"/app/build/plugins/authorizer"` |  |
@@ -153,6 +163,8 @@ A toolkit for distributed task execution ⚙️
 | postgresql.global.postgresql.auth.password | string | `"example"` |  |
 | postgresql.global.postgresql.auth.postgresPassword | string | `"example"` |  |
 | postgresql.global.postgresql.auth.username | string | `"funnel"` |  |
+| postgresql.image.repository | string | `"bitnamilegacy/postgresql"` |  |
+| postgresql.image.tag | string | `"11.9.0"` |  |
 | postgresql.primary.persistence.enabled | bool | `false` |  |
 | rbac.create | bool | `true` |  |
 | replicaCount | int | `1` |  |

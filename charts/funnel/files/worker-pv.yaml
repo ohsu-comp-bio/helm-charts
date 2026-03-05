@@ -13,10 +13,13 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   mountOptions:
-    - allow-delete
+    # Testing:
+    # - allow-delete
     - allow-overwrite
+    - incremental-upload
     - region={{`{{.Region}}`}}
     - file-mode=0755
+    - prefix=funnel-temp-files/
     {{`{{- if .KmsKeyID}}`}}
     - sse aws:kms
     - sse-kms-key-id={{`{{.KmsKeyID}}`}}
@@ -26,6 +29,10 @@ spec:
     volumeHandle: s3-csi-{{`{{.TaskId}}`}}
     volumeAttributes:
       bucketName: {{`{{.Bucket}}`}}
+      {{- if .Values.authenticationSource }}
+      authenticationSource: {{ .Values.authenticationSource }}
+      stsRegion: {{ .Values.stsRegion }}
+      {{- end }}
   claimRef:
     namespace: {{`{{.Namespace}}`}}
     name: funnel-worker-pvc-{{`{{.TaskId}}`}}
