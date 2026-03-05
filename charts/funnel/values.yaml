@@ -1,6 +1,3 @@
-# Kubernetes-specifc Settings
-replicaCount: 1
-
 image:
   repository: quay.io/ohsu-comp-bio/funnel
   pullPolicy: Always
