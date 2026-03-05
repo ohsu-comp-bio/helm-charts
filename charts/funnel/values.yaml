@@ -424,6 +424,8 @@ Kubernetes:
   # ReconcileRate is how often the compute backend compares states in Funnel's backend
   # to those reported by the backend
   ReconcileRate: 10s
+  # Number of funnel-server replicas to run.
+  ReplicaCount: 1
   # Kubernetes Namespace to spawn jobs within
   Namespace: ""
   # Kubernetes Namespace to spawn jobs within
