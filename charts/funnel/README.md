@@ -1,6 +1,6 @@
 # funnel
 
-![Version: 0.1.98-rc.13](https://img.shields.io/badge/Version-0.1.98--rc.13-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2026-03-01.2](https://img.shields.io/badge/AppVersion-2026--03--01.2-informational?style=flat-square)
+![Version: 0.1.98-rc.14](https://img.shields.io/badge/Version-0.1.98--rc.14-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2026-03-01.2](https://img.shields.io/badge/AppVersion-2026--03--01.2-informational?style=flat-square)
 
 A toolkit for distributed task execution ⚙️
 
@@ -67,7 +67,7 @@ A toolkit for distributed task execution ⚙️
 | Kubernetes.PVTemplate | string | `""` |  |
 | Kubernetes.ReconcileRate | string | `"10s"` |  |
 | Kubernetes.ReplicaCount | int | `1` |  |
-| Kubernetes.Resources.Defaults.Cpus | string | `"100m"` |  |
+| Kubernetes.Resources.Defaults.Cpus | string | `"1000m"` |  |
 | Kubernetes.Resources.Defaults.DiskGb | string | `"512Mi"` |  |
 | Kubernetes.Resources.Defaults.RamGb | string | `"512Mi"` |  |
 | Kubernetes.Resources.Limits.Cpus | string | `"8000m"` |  |
