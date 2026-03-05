@@ -66,6 +66,7 @@ A toolkit for distributed task execution ⚙️
 | Kubernetes.PVCTemplate | string | `""` |  |
 | Kubernetes.PVTemplate | string | `""` |  |
 | Kubernetes.ReconcileRate | string | `"10s"` |  |
+| Kubernetes.ReplicaCount | int | `1` |  |
 | Kubernetes.Resources.Defaults.Cpus | string | `"100m"` |  |
 | Kubernetes.Resources.Defaults.DiskGb | string | `"512Mi"` |  |
 | Kubernetes.Resources.Defaults.RamGb | string | `"512Mi"` |  |
@@ -167,7 +168,6 @@ A toolkit for distributed task execution ⚙️
 | postgresql.image.tag | string | `"11.9.0"` |  |
 | postgresql.primary.persistence.enabled | bool | `false` |  |
 | rbac.create | bool | `true` |  |
-| replicaCount | int | `1` |  |
 | resources.limits.cpu | string | `"1000m"` |  |
 | resources.limits.ephemeral_storage | string | `"2048Mi"` |  |
 | resources.limits.memory | string | `"2048Mi"` |  |
