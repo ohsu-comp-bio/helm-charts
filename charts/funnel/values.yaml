@@ -1,6 +1,3 @@
-# Kubernetes-specifc Settings
-replicaCount: 1
-
 image:
   repository: quay.io/ohsu-comp-bio/funnel
   pullPolicy: Always
@@ -443,6 +440,8 @@ Kubernetes:
   # ReconcileRate is how often the compute backend compares states in Funnel's backend
   # to those reported by the backend
   ReconcileRate: 10s
+  # Number of funnel-server replicas to run.
+  ReplicaCount: 1
   # Kubernetes Namespace to spawn jobs within
   Namespace: ""
   # Kubernetes Namespace to spawn jobs within
