@@ -43,11 +43,11 @@ Kubernetes:
 
   # Worker Job
   WorkerTemplate: |
-{{ tpl (.Files.Get "files/worker-job.yaml") . | indent 4 }}
+{{ tpl ((.Values.Kubernetes.WorkerTemplate | default (.Files.Get "files/worker-job.yaml"))) . | indent 4 }}
 
   # Executor Job
   ExecutorTemplate: |
-{{ tpl (.Files.Get "files/executor-job.yaml") . | indent 4 }}
+{{ tpl ((.Values.Kubernetes.ExecutorTemplate | default (.Files.Get "files/executor-job.yaml"))) . | indent 4 }}
 
   # PV template
   PVTemplate: |
