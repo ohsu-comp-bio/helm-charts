@@ -11,6 +11,16 @@ spec:
   backoffLimit: {{ .Values.backoffLimit}}
   completions: {{ .Values.completions }}
   template:
+    metadata:
+      # Annotations
+      {{`
+      {{- if .Executor.Annotations }}
+      annotations:
+        {{- range $key, $value := .Annotations }}
+        {{ $key }}: {{ $value }}
+        {{- end }}
+      {{- end }}
+      `}}
     spec:
       # NodeSelectors
       # https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/#create-a-pod-that-gets-scheduled-to-your-chosen-node
