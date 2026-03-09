@@ -13,14 +13,10 @@ spec:
   template:
     metadata:
       # Annotations
-      {{`
-      {{- if .Executor.Annotations }}
+    {{- with .Values.Kubernetes.Executor.Annotations }}
       annotations:
-        {{- range $key, $value := .Annotations }}
-        {{ $key }}: {{ $value }}
-        {{- end }}
-      {{- end }}
-      `}}
+      {{ toYaml . | indent 2 }}
+    {{- end }}
     spec:
       # NodeSelectors
       # https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/#create-a-pod-that-gets-scheduled-to-your-chosen-node
