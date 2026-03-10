@@ -1,7 +1,6 @@
 Compute: {{ .Values.Compute }}
 
 Kubernetes:
-  Executor: {{ .Values.Kubernetes.Executor }}
   DisableReconciler: {{ .Values.Kubernetes.DisableReconciler }}
   DisableJobCleanup: {{ .Values.Kubernetes.DisableJobCleanup }}
   ReconcileRate: {{ .Values.Kubernetes.ReconcileRate }}
