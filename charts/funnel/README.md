@@ -1,6 +1,6 @@
 # funnel
 
-![Version: 0.1.99-rc.4](https://img.shields.io/badge/Version-0.1.99--rc.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2026-03-10](https://img.shields.io/badge/AppVersion-2026--03--10-informational?style=flat-square)
+![Version: 0.1.99-rc.5](https://img.shields.io/badge/Version-0.1.99--rc.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2026-03-10](https://img.shields.io/badge/AppVersion-2026--03--10-informational?style=flat-square)
 
 A toolkit for distributed task execution ⚙️
 
@@ -75,6 +75,7 @@ A toolkit for distributed task execution ⚙️
 | Kubernetes.Resources.Limits.RamGb | string | `"4096Mi"` |  |
 | Kubernetes.ServiceAccount | string | `""` |  |
 | Kubernetes.Tolerations | list | `[]` |  |
+| Kubernetes.Worker | object | `{}` |  |
 | Kubernetes.WorkerTemplate | string | `""` |  |
 | LocalStorage.AllowedDirs[0] | string | `"./"` |  |
 | Logger.Formatter | string | `"text"` |  |
