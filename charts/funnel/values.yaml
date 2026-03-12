@@ -433,6 +433,7 @@ Kubernetes:
   # Ref: executor-job.yaml#spec.template.metadata.annotations
   Executor:
     Annotations: {}
+  Worker: {}
   # Turn off task state reconciler. When enabled, Funnel communicates with Kubernetes
   # to find tasks that are stuck in a queued state or errored and
   # updates the task state accordingly.
