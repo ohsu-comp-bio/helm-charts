@@ -12,6 +12,22 @@ spec:
   completions: {{ .Values.completions }}
   template:
     metadata:
+
+    # If priorityClassName is set for the Executor, use that. 
+    # Otherwise, if it's set for the Worker, use that. 
+    # This allows users to set a default priority class for all jobs by setting it for the Worker,
+    # but also override it for the Executor if needed.
+    {{- $pc := ""}}
+    {{- if .Values.Kubernetes.Executor.PriorityClassName }}
+      {{- $pc = .Values.Kubernetes.Executor.PriorityClassName }}
+    {{- else if .Values.Kubernetes.Worker.PriorityClassName }}
+      {{- $pc = .Values.Kubernetes.Worker.PriorityClassName }}
+    {{- end }}
+
+    {{- if $pc }}
+      priorityClassName: {{ $pc }}
+    {{- end }}
+
       # Annotations
     {{- with .Values.Kubernetes.Executor.Annotations }}
       annotations:

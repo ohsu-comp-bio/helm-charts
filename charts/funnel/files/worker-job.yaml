@@ -24,6 +24,10 @@ spec:
         app: funnel-worker
         task-id: {{`{{.TaskId}}`}}
     spec:
+    
+    {{ if .Values.Kubernetes.Worker.PriorityClassName }}
+      priorityClassName: {{ .Values.Kubernetes.Worker.PriorityClassName }}
+    {{ end }}
       # NodeSelectors
       # https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/#create-a-pod-that-gets-scheduled-to-your-chosen-node
       {{`
