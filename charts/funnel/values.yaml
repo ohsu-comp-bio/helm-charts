@@ -456,6 +456,8 @@ Kubernetes:
   NodeSelector: {}
   # Tolerations (scheduling)
   Tolerations: []
+  Timeout:
+    duration: 30s
 
   # Job template used for executing the tasks.
   ExecutorTemplate: ""

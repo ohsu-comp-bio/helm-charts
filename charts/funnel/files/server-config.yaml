@@ -17,6 +17,11 @@ Kubernetes:
       Cpus: {{ .Values.Kubernetes.Resources.Limits.Cpus }}
       RamGb: {{ .Values.Kubernetes.Resources.Limits.RamGb }}
       DiskGb: {{ .Values.Kubernetes.Resources.Limits.DiskGb }}
+  
+  {{- if .Values.Kubernetes.Timeout }}
+  Timeout:
+    duration: {{ .Values.Kubernetes.Timeout.duration }}
+  {{- end }}
 
   NodeSelector:
     {{- if .Values.Kubernetes.NodeSelector }}
