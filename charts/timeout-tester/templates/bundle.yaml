@@ -70,6 +70,8 @@ webhooks:
   - name: delay.test.svc
     admissionReviewVersions: ["v1"]
     sideEffects: None
+    # Seconds that the API server will wait before timing out the webhook request itself.
+    # Note that this is different then the resource timeout period configured in values.yaml
     timeoutSeconds: 30 
     clientConfig:
       service:
