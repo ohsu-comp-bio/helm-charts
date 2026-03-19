@@ -6,18 +6,33 @@ metadata:
     app: funnel
     taskId: {{`{{.TaskId}}`}}
 spec:
-  # Using an empty string for storageClassName helps avoid conflicts 
-  # with the 'standard' provisioner while satisfying the manual link.
-  storageClassName: "manual" 
+  storageClassName: "" # Required for static provisioning
   capacity:
     storage: "10Mi"
   accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
-  # hostPath is the simplest "benign" volume type for kind
-  hostPath:
-    path: "/tmp/funnel-{{`{{.TaskId}}`}}"
-    type: DirectoryOrCreate
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+    # Testing:
+    # - allow-delete
+    - allow-overwrite
+    - incremental-upload
+    - region={{`{{.Region}}`}}
+    - file-mode=0755
+    - prefix=funnel-temp-files/
+    {{`{{- if .KmsKeyID}}`}}
+    - sse aws:kms
+    - sse-kms-key-id={{`{{.KmsKeyID}}`}}
+    {{`{{- end}}`}}
+  csi:
+    driver: s3.csi.aws.com
+    volumeHandle: s3-csi-{{`{{.TaskId}}`}}
+    volumeAttributes:
+      bucketName: {{`{{.Bucket}}`}}
+      {{- if .Values.authenticationSource }}
+      authenticationSource: {{ .Values.authenticationSource }}
+      stsRegion: {{ .Values.stsRegion }}
+      {{- end }}
   claimRef:
     namespace: {{`{{.Namespace}}`}}
     name: funnel-worker-pvc-{{`{{.TaskId}}`}}
