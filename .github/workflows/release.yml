@@ -43,6 +43,11 @@ jobs:
       
       - run: git pull
 
+      - name: Add Bitnami Repo
+        run: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo update
+
       - name: Run helm-docs
         uses: losisin/helm-docs-github-action@v1
         with:
