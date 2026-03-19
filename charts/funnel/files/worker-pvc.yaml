@@ -1,4 +1,3 @@
-# Worker/Executor PVC
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -8,10 +7,11 @@ metadata:
     app: funnel
     taskId: {{`{{.TaskId}}`}}
 spec:
-  storageClassName: "" # Required for static provisioning
+  storageClassName: "manual"
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 10Mi
+  # Explicitly bind to the PV created by Funnel
   volumeName: funnel-worker-pv-{{`{{.TaskId}}`}}

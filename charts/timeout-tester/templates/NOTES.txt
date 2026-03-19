@@ -1,0 +1,12 @@
+Timeout Test successfully installed!
+ 
+ 🕒 Delay period: {{ .Values.delaySeconds }}s
+ 
+ 📦 Targeted resources:
+    {{ if .Values.resources }}{{- range .Values.resources }}- {{ . }}{{- end }}
+    {{ else }}- jobs{{ end }}
+1. Submit Task
+   DEBUG logs are expected to show "context deadline exceeded" timeout error
+
+2. Uninstall
+   helm uninstall {{ .Release.Name }} -n {{ .Release.Namespace }}

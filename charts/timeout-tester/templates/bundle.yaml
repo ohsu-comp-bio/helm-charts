@@ -1,0 +1,102 @@
+{{- $certs := (include "timeout-tester.certs" .) | fromYaml -}}
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "timeout-tester.fullname" . }}-tls
+type: kubernetes.io/tls
+data:
+  ca.crt: {{ $certs.ca }}
+  tls.crt: {{ $certs.cert }}
+  tls.key: {{ $certs.key }}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "timeout-tester.fullname" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "timeout-tester.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "timeout-tester.fullname" . }}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/values: {{ .Values | quote | sha256sum }}
+    spec:
+      containers:
+        - name: webhook
+          image: {{ .Values.image }}
+          command: ["python3", "/app/delay.py"]
+          env:
+            - name: DELAY_SECONDS
+              value: {{ .Values.delaySeconds | quote }}
+          ports:
+            - containerPort: 8443
+          volumeMounts:
+            - name: certs
+              mountPath: "/etc/webhook/certs"
+              readOnly: true
+            - name: script
+              mountPath: "/app"
+      volumes:
+        - name: certs
+          secret:
+            secretName: {{ include "timeout-tester.fullname" . }}-tls
+        - name: script
+          configMap:
+            name: {{ include "timeout-tester.fullname" . }}-script
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "timeout-tester.fullname" . }}
+spec:
+  ports:
+    - port: 443
+      targetPort: 8443
+  selector:
+    app: {{ include "timeout-tester.fullname" . }}
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: {{ include "timeout-tester.fullname" . }}
+webhooks:
+  - name: delay.test.svc
+    admissionReviewVersions: ["v1"]
+    sideEffects: None
+    timeoutSeconds: 30 
+    clientConfig:
+      service:
+        name: {{ include "timeout-tester.fullname" . }}
+        namespace: {{ .Release.Namespace }}
+        path: "/mutate"
+      caBundle: {{ $certs.ca }}
+    rules:
+      - operations: ["CREATE"]
+        apiGroups: ["*"]
+        apiVersions: ["v1"]
+        resources:
+        {{- if .Values.reources }}
+        {{- range .Values.resources }}
+          - {{ . | quote }}
+        {{- end }}
+        {{- else }}
+          - jobs
+        {{- end }}
+    namespaceSelector:
+      matchExpressions:
+        - key: kubernetes.io/metadata.name
+          operator: In
+          values:
+            - {{ .Release.Namespace }}
+    objectSelector:
+      matchExpressions:
+        - key: app
+          operator: NotIn
+          values: ["{{ include "timeout-tester.fullname" . }}"]

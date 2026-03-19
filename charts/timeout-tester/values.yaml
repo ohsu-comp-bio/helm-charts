@@ -1,0 +1,20 @@
+delaySeconds: 10
+
+image: python:3.14-slim
+
+resources:
+  - configmaps
+  # - jobs
+  # - persistentvolumeclaims
+  # - persistentvolumes
+  # - pods
+  # - serviceaccounts
+
+service:
+  type: ClusterIP
+  port: 443
+
+ingress:
+  enabled: false
+  tls: false
+  hosts: []
