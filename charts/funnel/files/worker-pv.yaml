@@ -15,8 +15,9 @@ spec:
   mountOptions:
     # Testing:
     # - allow-delete
-    - allow-overwrite
-    - incremental-upload
+    - allow-overwrite # allow overwriting existing files
+    - incremental-upload # allow appending to existing files
+    - allow-other # allow non-root users to access the mounted directory
     - region={{`{{.Region}}`}}
     - file-mode=0755
     - prefix=funnel-temp-files/
