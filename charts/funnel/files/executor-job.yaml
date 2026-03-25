@@ -83,6 +83,13 @@ spec:
         command: ["/bin/sh", "-c"]
         args: {{`{{.Command}}`}}
         workingDir: {{`{{.Workdir}}`}}
+        env:
+        {{`
+        {{- range $key, $value := .Env }}
+        - name: {{ $key }}
+          value: "{{ $value }}"
+        {{- end }}
+        `}}
         resources:
           requests:
             cpu: {{`{{ .Cpus }}`}}
