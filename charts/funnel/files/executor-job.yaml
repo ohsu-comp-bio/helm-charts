@@ -8,8 +8,8 @@ metadata:
     app: funnel-executor
     job-name: {{`{{.TaskId}}-{{.JobId}}`}}
 spec:
-  backoffLimit: {{ .Values.backoffLimit}}
-  completions: {{ .Values.completions }}
+  backoffLimit: {{ .Values.Kubernetes.Executor.backoffLimit}}
+  completions: {{ .Values.Kubernetes.Executor.completions }}
   template:
     metadata:
 
@@ -74,7 +74,7 @@ spec:
       {{- end }}
       `}}
 
-      restartPolicy: {{ .Values.restartPolicy.executor }}
+      restartPolicy: {{ .Values.Kubernetes.Executor.restartPolicy }}
       serviceAccountName: {{`{{.ServiceAccountName}}`}}
       containers:
       - name: funnel-worker-{{`{{.TaskId}}`}}
