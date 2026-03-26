@@ -422,7 +422,7 @@ Kubernetes:
     # Note: This value is not currently saved in the Funnel Server config and only visible by describing the Executor Pod itself (e.g. `kubectl describe pod <pod-name>`).
     # Ref: executor-job.yaml#spec.template.metadata.annotations
     Annotations: {}
-    PriorityClassName:
+    PriorityClassName: ""
     restartPolicy: OnFailure
     # Setting `backoffLimit` to 0 means no retries
     # Setting `completions` to 1 means the job will be marked as complete after a single successful execution.
@@ -432,7 +432,7 @@ Kubernetes:
     completions: 1
   Worker:
     Annotations: {}
-    PriorityClassName:
+    PriorityClassName: ""
     restartPolicy: Never
     backoffLimit: 0
     completions: 1
