@@ -59,6 +59,10 @@ A toolkit for distributed task execution ⚙️
 | Kubernetes.DisableJobCleanup | bool | `false` |  |
 | Kubernetes.DisableReconciler | bool | `false` |  |
 | Kubernetes.Executor.Annotations | object | `{}` |  |
+| Kubernetes.Executor.PriorityClassName | string | `""` |  |
+| Kubernetes.Executor.backoffLimit | int | `0` |  |
+| Kubernetes.Executor.completions | int | `1` |  |
+| Kubernetes.Executor.restartPolicy | string | `"OnFailure"` |  |
 | Kubernetes.ExecutorTemplate | string | `""` |  |
 | Kubernetes.JobsNamespace | string | `""` |  |
 | Kubernetes.Namespace | string | `""` |  |
@@ -76,7 +80,11 @@ A toolkit for distributed task execution ⚙️
 | Kubernetes.ServiceAccount | string | `""` |  |
 | Kubernetes.Timeout.duration | string | `"30s"` |  |
 | Kubernetes.Tolerations | list | `[]` |  |
-| Kubernetes.Worker | object | `{}` |  |
+| Kubernetes.Worker.Annotations | object | `{}` |  |
+| Kubernetes.Worker.PriorityClassName | string | `""` |  |
+| Kubernetes.Worker.backoffLimit | int | `0` |  |
+| Kubernetes.Worker.completions | int | `1` |  |
+| Kubernetes.Worker.restartPolicy | string | `"Never"` |  |
 | Kubernetes.WorkerTemplate | string | `""` |  |
 | LocalStorage.AllowedDirs[0] | string | `"./"` |  |
 | Logger.Formatter | string | `"text"` |  |
@@ -137,8 +145,6 @@ A toolkit for distributed task execution ⚙️
 | Worker.PollingRate | string | `"5s"` |  |
 | Worker.WorkDir | string | `"./funnel-work-dir"` |  |
 | authenticationSource | string | `"pod"` |  |
-| backoffLimit | int | `0` |  |
-| completions | int | `1` |  |
 | image.initContainers[0].command[0] | string | `"cp"` |  |
 | image.initContainers[0].command[1] | string | `"/app/build/plugins/authorizer"` |  |
 | image.initContainers[0].command[2] | string | `"/opt/funnel/plugin-binaries/auth-plugin"` |  |
@@ -176,8 +182,6 @@ A toolkit for distributed task execution ⚙️
 | resources.requests.cpu | string | `"100m"` |  |
 | resources.requests.ephemeral_storage | string | `"512Mi"` |  |
 | resources.requests.memory | string | `"512Mi"` |  |
-| restartPolicy.executor | string | `"OnFailure"` |  |
-| restartPolicy.worker | string | `"Never"` |  |
 | service.httpPort | int | `8000` |  |
 | service.rpcPort | int | `9090` |  |
 | service.type | string | `"ClusterIP"` |  |
