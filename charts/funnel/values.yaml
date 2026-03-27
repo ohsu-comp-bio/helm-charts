@@ -55,17 +55,6 @@ mongodb:
 rbac:
   create: true
 
-# Backoff/Completions for Worker + Executor Jobs
-# Setting `backoffLimit` to 0 means no retries 
-# Setting `completions` to 1 means the job will be marked as complete after a single successful execution.
-# Funnel should not be restarting jobs (by default) so that clients can choose their preferred retry behavior
-# TODO: Should Funnel offer a built-in retry mechanism that users can configure on a per-task basis?
-backoffLimit: 0
-completions: 1
-restartPolicy:
-  executor: OnFailure
-  worker: Never
-
 # Resource Requests/Limits for Worker Jobs
 # Executor resource defaults/limits are in Kubernetes.Resources
 resources:
@@ -429,11 +418,25 @@ AWSBatch:
 
 # Kubernetes describes the configuration for the Kubernetes compute backend.
 Kubernetes:
-  # Note: This value is not currently saved in the Funnel Server config and only visible by describing the Executor Pod itself (e.g. `kubectl describe pod <pod-name>`).
-  # Ref: executor-job.yaml#spec.template.metadata.annotations
   Executor:
+    # Note: This value is not currently saved in the Funnel Server config and only visible by describing the Executor Pod itself (e.g. `kubectl describe pod <pod-name>`).
+    # Ref: executor-job.yaml#spec.template.metadata.annotations
     Annotations: {}
-  Worker: {}
+    PriorityClassName: ""
+    restartPolicy: OnFailure
+    # Setting `backoffLimit` to 0 means no retries
+    # Setting `completions` to 1 means the job will be marked as complete after a single successful execution.
+    # Funnel should not be restarting jobs (by default) so that clients can choose their preferred retry behavior
+    # TODO: Should Funnel offer a built-in retry mechanism that users can configure on a per-task basis?
+    backoffLimit: 0
+    completions: 1
+  Worker:
+    Annotations: {}
+    PriorityClassName: ""
+    restartPolicy: Never
+    backoffLimit: 0
+    completions: 1
+
   # Turn off task state reconciler. When enabled, Funnel communicates with Kubernetes
   # to find tasks that are stuck in a queued state or errored and
   # updates the task state accordingly.

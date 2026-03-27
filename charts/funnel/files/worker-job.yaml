@@ -16,13 +16,20 @@ metadata:
     {{- end }}
     `}}
 spec:
-  backoffLimit: {{ .Values.backoffLimit}}
-  completions: {{ .Values.completions }}
+  backoffLimit: {{ .Values.Kubernetes.Worker.backoffLimit}}
+  completions: {{ .Values.Kubernetes.Worker.completions }}
   template:
     metadata:
       labels:
         app: funnel-worker
         task-id: {{`{{.TaskId}}`}}
+
+    # Annotations
+    {{- with .Values.Kubernetes.Worker.Annotations }}
+      annotations:
+      {{ toYaml . | indent 2 }}
+    {{- end }}
+
     spec:
     
     {{ if .Values.Kubernetes.Worker.PriorityClassName }}
@@ -67,7 +74,7 @@ spec:
       `}}
 
       serviceAccountName: {{`{{.ServiceAccountName}}`}}
-      restartPolicy: {{ .Values.restartPolicy.worker }}
+      restartPolicy: {{ .Values.Kubernetes.Worker.restartPolicy }}
       containers:
       - name: funnel-worker-{{`{{.TaskId}}`}}
         image: {{`{{.Image}}`}}
