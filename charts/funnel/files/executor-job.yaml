@@ -82,11 +82,7 @@ spec:
         imagePullPolicy: Always
         command: ["/bin/sh", "-c"]
         args:
-        {{`
-        {{- range .Command}}
-        - {{.}}
-        {{- end}}
-        `}}
+        - {{`{{printf "%q" (index .Command 0)}}`}}
         workingDir: {{`{{.Workdir}}`}}
         env:
         {{`
