@@ -144,6 +144,27 @@ entries:
     - https://github.com/ohsu-comp-bio/helm-charts/releases/download/funnel-0.1.99/funnel-0.1.99.tgz
     version: 0.1.99
   - apiVersion: v2
+    appVersion: 2026-04-02.1
+    created: "2026-04-02T02:55:16.03971423Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.13
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.9.4
+    description: A toolkit for distributed task execution ⚙️
+    digest: 563dc01b6153ee2445d171b88e19e04ec11ce52b40dd57f75085fc50b79ce6f0
+    keywords:
+    - funnel
+    name: funnel
+    type: application
+    urls:
+    - https://github.com/ohsu-comp-bio/helm-charts/releases/download/funnel-0.1.99-rc.20/funnel-0.1.99-rc.20.tgz
+    version: 0.1.99-rc.20
+  - apiVersion: v2
     appVersion: "2026-04-02"
     created: "2026-04-02T02:50:30.24396667Z"
     dependencies:
@@ -2863,4 +2884,4 @@ entries:
     urls:
     - https://github.com/ohsu-comp-bio/helm-charts/releases/download/timeout-tester-0.1.2/timeout-tester-0.1.2.tgz
     version: 0.1.2
-generated: "2026-04-02T02:50:30.244379683Z"
+generated: "2026-04-02T02:55:16.040549574Z"
