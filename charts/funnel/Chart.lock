@@ -1,9 +1,9 @@
 dependencies:
 - name: postgresql
-  repository: https://charts.bitnami.com/bitnami
+  repository: oci://registry-1.docker.io/bitnamicharts
   version: 11.9.13
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
   version: 13.9.4
-digest: sha256:8b6b659202574ebb44c3330b7ceae2edd4b60c60cd07a82dd8878749430d13b3
-generated: "2026-01-27T16:08:11.527007-08:00"
+digest: sha256:958ab433a4b6ec121163300a2246bbafe5d1d44090c525742209832f0a80f6b7
+generated: "2026-04-02T19:55:51.001665-07:00"
