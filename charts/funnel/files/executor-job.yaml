@@ -120,11 +120,11 @@ spec:
         volumeMounts:
         {{`
         {{- if .NeedsPVC }}
-          {{range $idx, $item := .Volumes}}
+          {{- range $idx, $item := .Volumes}}
           - name: funnel-storage-{{$.TaskId}}
             mountPath: {{$item.ContainerPath}}
             subPath: {{$.TaskId}}{{$item.ContainerPath}}
-          {{end}}
+          {{- end}}
         {{- end }}
         `}}
 
