@@ -84,7 +84,9 @@ spec:
         # Command
         {{`
         {{- if .UseShell}}
-        command: ["/bin/sh", "-c"]
+        command:
+          - "/bin/sh"
+          - "-c"
         args:
           - {{printf "%q" (index .Command 0)}}
         {{- else}}
