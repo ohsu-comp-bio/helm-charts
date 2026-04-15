@@ -19,6 +19,9 @@ spec:
       {{ toYaml . | indent 2 }}
     {{- end }}
     
+      labels:
+        app: funnel-executor
+        job-name: {{`{{.TaskId}}`}}-{{`{{.JobId}}`}}
     spec:
     
     # If priorityClassName is set for the Executor, use that. 
@@ -62,18 +65,22 @@ spec:
       {{- end }}
       `}}
 
-      # SecurityContext
-      # https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
-      {{`
-      {{- if .securityContext }}
       securityContext:
-        fsGroup: {{ .securityContext.fsGroup }}
-        runAsUser: {{ .securityContext.runAsUser }}
-        runAsGroup: {{ .securityContext.runAsGroup }}
-        supplementalGroups: {{ .securityContext.supplementalGroups }}
-      {{- end }}
-      `}}
-
+        # Block the ability to gain more privileges
+        allowPrivilegeEscalation: false
+        privileged: false
+        
+        # Block all capabilities and then add back only the ones we need
+        capabilities:
+          drop: ["ALL"]
+          add: ["CHOWN", "DAC_OVERRIDE", "SETUID", "SETGID"]
+        
+        # Use the default seccomp profile, which should block several dangerous syscalls that could be used for privilege escalation or container escape
+        seccompProfile:
+          type: RuntimeDefault
+      
+      # Kubernetes service account token is not needed for the Executor, and disabling it can help reduce the risk of token theft and misuse.
+      automountServiceAccountToken: false
       restartPolicy: {{ .Values.Kubernetes.Executor.restartPolicy }}
       serviceAccountName: {{`{{.ServiceAccountName}}`}}
       containers:
