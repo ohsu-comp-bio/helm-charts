@@ -113,7 +113,7 @@ Logger:
   # Write logs to this path. If empty, logs are written to stderr.
   OutputFile: ""
   # Log format: json or text
-  Formatter: text
+  Formatter: json
   # Text format settings
   TextFormat:
     # Try to force colors/rich format in text output
