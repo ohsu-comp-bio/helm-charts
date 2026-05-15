@@ -308,7 +308,7 @@ HTCondor:
     universe = vanilla
     getenv = True
     executable = {{.Executable}}
-    arguments = worker run --config {{.Config}} --task-id {{.TaskId}}
+    arguments = worker run --config {{.Config}} --taskId {{.TaskId}}
     log = {{.WorkDir}}/condor-event-log
     error = {{.WorkDir}}/funnel-stderr
     output = {{.WorkDir}}/funnel-stdout

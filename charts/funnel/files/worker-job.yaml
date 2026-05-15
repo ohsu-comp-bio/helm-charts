@@ -5,7 +5,7 @@ metadata:
   namespace: {{`{{.JobsNamespace}}`}}
   labels:
     app: funnel-worker
-    task-id: {{`{{.TaskId}}`}}
+    taskId: {{`{{.TaskId}}`}}
     # Custom Labels support
     {{`
     {{- range $key, $value := .ExtraLabels }}
@@ -22,7 +22,7 @@ spec:
     metadata:
       labels:
         app: funnel-worker
-        task-id: {{`{{.TaskId}}`}}
+        taskId: {{`{{.TaskId}}`}}
 
     # Annotations
     {{- with .Values.Kubernetes.Worker.Annotations }}
