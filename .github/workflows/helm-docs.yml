@@ -8,7 +8,7 @@ on:
       - charts/**/templates/**
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   helm-docs:
@@ -20,13 +20,14 @@ jobs:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
 
-      - name: Configure Git
-        run: |
-          git config user.name "$GITHUB_ACTOR"
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-
       - name: Run helm-docs
         uses: losisin/helm-docs-github-action@v1
         with:
-          git-push: true
-          git-commit-message: "chore: update chart documentation [skip ci]"
+          git-push: false
+
+      - name: Check for uncommitted changes
+        run: |
+          if ! git diff --exit-code; then
+            echo "helm-docs output is out of date. Run helm-docs locally and commit the changes."
+            exit 1
+          fi
