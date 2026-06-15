@@ -1,0 +1,36 @@
+# Shared empty directory between all executor pods
+#
+# Caveats/Limitations:
+# - Requires all Worker + Executor pods for a given task are scheduled on the same node (RWO)
+# - Currently exploring alternative approaches to support POSIX + RWX (e.g. EFS, NFS, AWS S3 Files, emptyDir)
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: funnel-posix-pv-{{`{{.TaskId}}`}}
+  labels:
+    app: funnel
+    taskId: {{`{{.TaskId}}`}}
+    namespace: {{`{{.Namespace}}`}}
+spec:
+  storageClassName: "" # Required for static provisioning
+  capacity:
+    storage: "10Gi"
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Delete
+  {{- if .Values.kubernetes.posixVolume.efsFileSystemId }}
+  csi:
+    driver: nfs.csi.aws.com
+    volumeHandle: {{`{{.TaskId}}`}}-{{ .Values.kubernetes.posixVolume.nfsFileSystemId }}
+    # volumeHandle format for EFS static provisioning:
+    # fs-id[:access-point-id][::subpath]
+    # Using a task-scoped subpath so each task gets its own directory on the EFS filesystem
+    volumeHandle: {{ .Values.kubernetes.posixVolume.nfsFileSystemId }}::{{`{{.TaskId}}`}}
+  {{- else }}
+  hostPath:
+    path: /tmp/funnel-posix/{{`{{.TaskId}}`}}
+    type: DirectoryOrCreate
+  {{- end }}
+  claimRef:
+    namespace: {{`{{.Namespace}}`}}
+    name: funnel-posix-pvc-{{`{{.TaskId}}`}}

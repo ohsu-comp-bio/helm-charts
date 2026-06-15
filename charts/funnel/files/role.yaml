@@ -33,7 +33,7 @@ rules:
   resources: ["persistentvolumeclaims"]
   verbs: ["create", "get", "list", "watch", "delete"]
 
-# Events (for job status reporting)
+# Events (for job status reporting and surfacing pod warning events to users)
 - apiGroups: [""]
   resources: ["events"]
-  verbs: ["create", "patch"]
+  verbs: ["create", "patch", "get", "list", "watch"]

@@ -40,19 +40,11 @@ jobs:
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-      
-      - run: git pull
 
       - name: Add Bitnami Repo
         run: |
           helm repo add bitnami https://charts.bitnami.com/bitnami
           helm repo update
-
-      - name: Run helm-docs
-        uses: losisin/helm-docs-github-action@v1
-        with:
-          git-push: true
-          git-commit-message: "chore: update chart documentation [skip ci]"
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.7.0
