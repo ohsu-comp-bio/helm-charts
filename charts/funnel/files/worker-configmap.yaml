@@ -6,6 +6,7 @@ metadata:
   namespace: {{`{{ .Namespace }}`}}
   labels:
     app: funnel
+    taskId: {{`{{ .TaskId }}`}}
 data:
   funnel-worker.yaml: |
 {{`{{ .Config | indent 4}}`}}
