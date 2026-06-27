@@ -478,6 +478,24 @@ Kubernetes:
       RamGb: 4096Mi
       DiskGb: 4096Mi
 
+# cleanup configures the external-reconciler CronJob, which runs
+# `funnel kubernetes cleanup` to delete orphaned Funnel-managed Kubernetes
+# resources (PVs, ServiceAccounts, executor jobs) whose task is gone or terminal.
+cleanup:
+  # Enable the cleanup CronJob. When enabled, prefer disabling the in-server
+  # reconciler (Kubernetes.DisableReconciler) so the two don't run concurrently.
+  enabled: false
+
+  # How often the CronJob runs. Leave empty to derive the schedule from
+  # Kubernetes.ReconcileRate (rounded up to whole minutes, since a CronJob cannot
+  # run more often than once per minute). Set a standard 5-field cron expression
+  # to override, e.g. "*/15 * * * *" for every 15 minutes.
+  schedule: ""
+
+  # Offsets the start minute so cleanup jobs in different namespaces don't all fire
+  # at the same instant. Must be 0-59.
+  scheduleOffsetMinutes: 0
+
 #-------------------------------------------------------------------------------
 # Storage
 #-------------------------------------------------------------------------------
